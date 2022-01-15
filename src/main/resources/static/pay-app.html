@@ -1,0 +1,343 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="pay-main.html">收费</a></li>
+                                        <li><a href="pay-new-app.html">现场挂号</a></li>
+                                        <li class="active"><a href="pay-app.html">预约取号</a></li>
+                                        <li><a href="pay-history.html">缴费单记录</a></li>
+                                        <li><a href="pay-refund.html">退费</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="get-quote" style="float: right; margin-top: 10px;">
+                                <a href="staff-login.html" class="btn">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 90%; width: 100%; ">
+        <div class="main-sidebar" style="margin-top: 0;">
+            <!-- Single Widget -->
+            <div class="single-widget search">
+                <div class="form search-input">
+                    <input type="text" placeholder="输入预约者身份证号" id="search-id">
+                    <a class="button search-input" style="right: 0; top: 0;" onclick="searchApp()"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <!--/ End Single Widget -->
+
+            <div class="pay-app-order">
+                <table class="table" style="height: auto">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>身份证号</th>
+                            <th>预约种类</th>
+                            <th>预约科室</th>
+                            <th>预约医生</th>
+                            <th>就诊时间</th>
+                            <th>当前状态</th>
+                            <!-- 当前状态有：不可取号、可取号、已超时 -->
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="app-list">
+                        <!-- <tr>
+                            <td>啊啊啊</td>
+                            <td>500106000000000000</td>
+                            <td>专家号</td>
+                            <td>内科</td>
+                            <td>鹅鹅鹅</td>
+                            <td>2021-12-29 14:00~14:59</td>
+                            <td>可取号</td>
+                            <td>
+                                <button class="btn pay-app-list-btn" style="background-color: #32B87D;" onclick="confirmApp(this)">完成</button>
+                                <button class="btn pay-app-list-btn" style="background-color: #F82F56;" onclick="deleteApp(this)">删除</button>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+    <!--/ End portfolio -->
+
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+
+    <style type="text/css">
+        .single-widget.search {
+            margin-left: 30px;
+            margin-right: 30px;
+            padding: 0;
+        }
+
+        .pay-app-order {
+            margin-left: 30px;
+            margin-right: 30px;
+            height: 600px;
+            overflow-y: scroll;
+        }
+        .pay-app-list-btn {
+            font-size: 10px;
+            /* height: 20px; */
+            padding: 5px 20px;
+        }
+
+
+    </style>
+
+    <script>
+        $(location).ready(function(){$('#app-list').html('')})
+        function searchApp() {
+            $('#app-list').html('') // 清空内容
+
+            var patientIdentity = $('#search-id').val()
+            
+            departmentId2Name = {
+                'DE000001': '内科',
+                'DE000002': '外科',
+                'DE000003': '儿科',
+                'DE000004': '五官科',
+                'DE000005': '皮肤科',
+                'DE000006': '康复科',
+            }
+
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '/take_number_appoint?patientIdentity=' + patientIdentity,
+                success: function(data) {
+                    for (let i = 0; i < data.length; i++) {
+                        var date = new Date(data[i].reserveTime)
+                        var year = date.getYear()
+                        var month = date.getMonth() + 1
+                        var day = date.getDate()
+                        var hour = date.getHours()
+
+                        if (month < 10) month = '0' + month
+                        if (day < 10) day = '0' + day
+                        if (hour < 10) hour = '0' + hour
+
+                        var time;
+                        if (hour == '9') time = '09:00~09:59'
+                        else time = hour + ':00~' + hour + ':59'
+                        // var thisDate = new Date()
+                        // var now = thisDate.getTime()
+                        var state = data[i].reserveState == 1 ? '已完成' : data[i].reserveState == -1 ? '已取消' : '可取号';
+                        // if (now < data[i].time) {
+                        //     var tmpDate = new Date(date[i].time - now)
+                        //     if (tmpDate.getTime() > 30*60*1000) {
+                        //         state = '未到取号时间'
+                        //     }
+                        // } else{
+                        //     var tmpDate = new Date(now - date[i].time)
+                        //     if (tmpDate.getTime() < 60*60*1000) {
+                        //         state = '已过取号时间'
+                        //     }
+                        // }
+                        var reserveType = data[i].reserveType == 0 ? '专家号' : '普通号';
+                        $('#app-list').append(
+                            '<tr data-id="' + data[i].reserveId + '">' +
+                                '<td>' + data[i].patientName + '</td>' +
+                                '<td>' + data[i].patientIdentity + '</td>' +
+                                '<td>' + reserveType + '</td>' +
+                                '<td>' + departmentId2Name[data[i].departmentId] + '</td>' +
+                                '<td>' + data[i].doctorName + '</td>' +
+                                '<td>' + time + '</td>' +
+                                '<td>' + state + '</td>' + 
+                                '<td>' +
+                                    '<button class="btn pay-app-list-btn" style="background-color: #32B87D;" onclick="confirmApp(this)">取号</button>' +
+                                    '<button class="btn pay-app-list-btn" style="background-color: #F82F56;" onclick="deleteApp(this)">取消</button>' +
+                                '</td>'+
+                            '</tr>'
+                        )
+                    }
+                },
+            })
+        }
+
+        function confirmApp(e) {//取号
+            var reserveId = $(e).parent().parent().data('id')
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {'reserveId': reserveId},
+                url: '/take_number_appoint_submit',
+                // async: false,
+                success: function(data) {
+                    if(data.status == 'ok'){
+                        var rid = reserveId
+                        // var rid = '10086'
+                        var pname = $(e).parent().parent().children()[0].innerHTML
+                        var pid = $(e).parent().parent().children()[1].innerHTML
+                        var rtype = $(e).parent().parent().children()[2].innerHTML == '专家号' ? 1 : 0
+                        var payUrl = 'pay-main.html?rid='+JSON.stringify(rid)+
+                            '&rtype='+ rtype +
+                            '&pid='+JSON.stringify(pid)+
+                            '&pname='+JSON.stringify(encodeURIComponent(pname))
+                        alert('已确认挂号，点击跳转至挂号缴费')
+                        $(location).attr('href',payUrl)
+                    }
+                    else if (data.status == 'fail1'){
+                        console.log(data);
+                        alert(data.msg)
+                        $(location).attr('href','pay-new-app.html')
+                    }
+                    else{
+                        console.log(data);
+                        alert(data.msg)
+                    }
+                }
+            })
+        }
+
+        function deleteApp(e) { //取消预约
+            var reserveId = $(e).parent().parent().data('id')
+            var ans = confirm('取消后不可恢复。确认取消？')
+            if(!ans) return;
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: {'reserveId': reserveId},
+                url: '/appoint_cancel_staff',
+                async: false,
+                success: function(data) {
+                    // $(e).parent().parent().remove()
+                    location.reload();
+                    alert('取消成功！')
+                }
+            })
+        }
+
+    </script>
+
+
+
+</body>
+
+
+</html>

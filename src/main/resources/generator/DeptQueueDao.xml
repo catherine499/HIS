@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.DeptQueueDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.DeptQueue">
+    <id column="dept_queue_id" jdbcType="INTEGER" property="deptQueueId" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="dept_queue_date" jdbcType="DATE" property="deptQueueDate" />
+    <result column="register_id" jdbcType="INTEGER" property="registerId" />
+    <result column="register_number" jdbcType="INTEGER" property="registerNumber" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dept_queue_id, department_id, dept_queue_date, register_id, register_number, `state`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dept_queue
+    where dept_queue_id = #{deptQueueId,jdbcType=INTEGER}
+  </select>
+  <select id="getMaxIdByDeptId" resultType="java.lang.Integer" >
+    select   ifnull(MAX(register_number),0)
+    from dept_queue
+    where department_id = #{departmentId,jdbcType=VARCHAR} and  <![CDATA[ DATE_FORMAT(dept_queue_date, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')]]>
+  </select>
+  <select id="getByRegisterId" resultType="com.example.HIS.models.DeptQueue" resultMap="BaseResultMap">
+    select * from dept_queue where register_id=#{registerId,jdbcType=INTEGER}
+  </select>
+    <select id="getByDeptId" resultType="com.example.HIS.models.DeptQueue" resultMap="BaseResultMap">
+      select *
+      from dept_queue
+      where department_id=#{deptId,jdbcType=VARCHAR} and <![CDATA[ DATE_FORMAT(dept_queue_date, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')]]>
+        and state !=1
+      order by dept_queue_date asc
+    </select>
+  <select id="getReserveByDeptId" resultType="com.example.HIS.models.DeptQueue" resultMap="BaseResultMap">
+    select *
+    from dept_queue,register_tables
+    where dept_queue.department_id=#{deptId,jdbcType=VARCHAR}
+      and <![CDATA[ DATE_FORMAT(dept_queue.dept_queue_date, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')]]>
+      and dept_queue.state !=1 and register_tables.register_id=dept_queue.register_id
+      and register_tables.register_queue_type=1
+    order by dept_queue_date asc
+  </select>
+  <select id="getSiteByDeptId" resultType="com.example.HIS.models.DeptQueue" resultMap="BaseResultMap">
+    select *
+    from dept_queue,register_tables
+    where dept_queue.department_id=#{deptId,jdbcType=VARCHAR}
+      and <![CDATA[ DATE_FORMAT(dept_queue.dept_queue_date, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')]]>
+      and dept_queue.state !=1 and register_tables.register_id=dept_queue.register_id
+      and register_tables.register_queue_type=0
+    order by dept_queue_date asc
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dept_queue
+    where dept_queue_id = #{deptQueueId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="dept_queue_id" keyProperty="deptQueueId" parameterType="com.example.HIS.models.DeptQueue" useGeneratedKeys="true">
+    insert into dept_queue (department_id, dept_queue_date, register_id, 
+      register_number, `state`)
+    values (#{departmentId,jdbcType=VARCHAR}, #{deptQueueDate,jdbcType=DATE}, #{registerId,jdbcType=INTEGER}, 
+      #{registerNumber,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="dept_queue_id" keyProperty="deptQueueId" parameterType="com.example.HIS.models.DeptQueue" useGeneratedKeys="true">
+    insert into dept_queue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="deptQueueDate != null">
+        dept_queue_date,
+      </if>
+      <if test="registerId != null">
+        register_id,
+      </if>
+      <if test="registerNumber != null">
+        register_number,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptQueueDate != null">
+        #{deptQueueDate,jdbcType=DATE},
+      </if>
+      <if test="registerId != null">
+        #{registerId,jdbcType=INTEGER},
+      </if>
+      <if test="registerNumber != null">
+        #{registerNumber,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.DeptQueue">
+    update dept_queue
+    <set>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptQueueDate != null">
+        dept_queue_date = #{deptQueueDate,jdbcType=DATE},
+      </if>
+      <if test="registerId != null">
+        register_id = #{registerId,jdbcType=INTEGER},
+      </if>
+      <if test="registerNumber != null">
+        register_number = #{registerNumber,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dept_queue_id = #{deptQueueId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.DeptQueue">
+    update dept_queue
+    set department_id = #{departmentId,jdbcType=VARCHAR},
+      dept_queue_date = #{deptQueueDate,jdbcType=DATE},
+      register_id = #{registerId,jdbcType=INTEGER},
+      register_number = #{registerNumber,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=INTEGER}
+    where dept_queue_id = #{deptQueueId,jdbcType=INTEGER}
+  </update>
+</mapper>

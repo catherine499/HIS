@@ -1,0 +1,23 @@
+.doctor-details-item .doctor-details-contact .basic-info li i,.doctor-details-item .doctor-details-biography h3,.header .top-link li:hover a,.header .top-contact li a:hover,.header .top-contact li i,.header .nav li.active a,.header .nav li:hover a,.header .nav li .dropdown li:hover a,.header .search-form button:hover,.slider .single-slider h1 span,.Feautes .single-features .signle-icon i,.fun-facts .single-fun:hover i,.call-action .content .btn,.call-action .content .second:hover,.portfolio .single-pf .btn,.pf-details .image-slider .owl-carousel .owl-nav div,.services .single-service i,.services .single-service h4 a:hover,.departments .department-tab .nav li a.active i,.departments .department-tab .tab-pane .department-left .p1,.pricing-table .single-table .icon i,.pricing-table .single-table .amount,.team .t-bottom h2 a:hover,.blog .single-news .news-body h2 a:hover,.main-sidebar .categor-list li a:hover,.main-sidebar .single-post .content h5 a:hover,
+.news-single .news-title a:hover,.slicknav_nav li:hover a,.slicknav_nav li .dropdown li a:hover,.slicknav_nav li:hover .slicknav_arrow,.news-single .meta span i,.news-single .form-group i,.login .login-form p a,.login .login-form .lost-pass:hover,.register .register-form p a,.register .register-form  .terms,.error-page .error-inner h1,.mail-seccess .success-inner h1,.doctor-calendar-table table tbody tr td span.time,.doctor-calendar-table table tbody tr td:hover span.time,.about-content span,.about-content ul li i,.single-vision-box:hover .icon,.our-mission-content .sub-title,.our-mission-content ul li .icon,.footer .single-footer .social li a:hover,.footer .single-footer .newsletter-inner .button{
+	color:#1A76D1;
+}
+.accordion li a.active,#scrollUp,.team .t-icon a,.slicknav_menu .slicknav_icon-bar,.color-plate .color-plate-icon,.header .nav li a::before,.header .single-widget i,.header .right-bar a,.header .search-form button,.slider .single-slider .btn,.slider .single-slider .btn.primary:before,.slider .owl-carousel .owl-nav div,.schedule .single-schedule,.schedule .single-schedule:before,.Feautes .single-features:hover .signle-icon i,.why-choose .choose-left h3:before,.why-choose .choose-left .list li i,.why-choose .choose-right .video,.call-action .content .btn:before,.call-action .content .btn:hover,.portfolio .single-pf:before,.pf-details .image-slider .owl-carousel .owl-nav div:hover,.pf-details .date,.pf-details .body-text .share ul li a:hover,.services-details-img blockquote,.departments .department-tab .tab-pane .department-left .list li i,.pricing-table .table-list i,.doctor-details-area .doctor-details-left .social li a:hover,.blog .single-news .news-content:before,.blog .single-news .news-body .date,.main-sidebar .single-widget .title::before,
+.main-sidebar .search .button:hover,.main-sidebar .side-tags .tag a:hover,.news-single .prev-next li a:hover,.news-single .single-comments a,.news-single .form-group.button .btn,.appointment .form-group .list li:hover,.appointment.single-page .work-hour,.login .login-form h2:before,.login .form .btn:hover,.login .login-form .checkbox label::after,.register .register-form h2:before,.register .form .btn:hover,.register .register-form .checkbox label::after,.contact-us .contact-us-form h2:before,.contact-us .form .btn:hover,.contact-us .contact-us-form .checkbox label::after,.contact-us .single-info,.contact-us .single-info:before,.error-page .search-form .btn,.doctor-calendar-table table thead tr th,.doctor-calendar-table table tbody tr td:hover,.about-content ul li:hover i,.single-vision-box .icon,.single-vision-box::before,.our-mission-content ul li:hover .icon,.footer .copyright,.footer .footer-top,.preloader::before, .preloader::after,.btn,.overlay:before,.pagination .pagination-list li.active a,.pagination .pagination-list li:hover a{
+	background:#1A76D1;
+}
+.accordion a:hover{
+	background:#1A76D1 !important;
+}
+.Feautes .single-features::before{
+	border-bottom-color:#1A76D1;
+}
+.service-details-inner h2,.header .nav li .dropdown{
+	border-left-color:#1A76D1;
+}
+.accordion li a.active,.departments .department-tab .nav li a.active,.login .login-form .checkbox label::before,.register .register-form .checkbox label::before,.accordion li a.active,.contact-us .contact-us-form .checkbox label::before,.doctor-calendar-table table tbody tr td:hover{
+	border-color:#1A76D1;
+}
+.preloader .loader .indicator svg polyline#front {
+  stroke: #1A76D1;
+}

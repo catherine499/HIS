@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.CashierDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.Cashier">
+    <id column="cashier_id" jdbcType="VARCHAR" property="cashierId" />
+    <result column="cashier_identity" jdbcType="VARCHAR" property="cashierIdentity" />
+    <result column="cashier_password" jdbcType="VARCHAR" property="cashierPassword" />
+    <result column="cashier_name" jdbcType="VARCHAR" property="cashierName" />
+    <result column="cashier_gender" jdbcType="INTEGER" property="cashierGender" />
+    <result column="cashier_tel" jdbcType="VARCHAR" property="cashierTel" />
+    <result column="cashier_address" jdbcType="VARCHAR" property="cashierAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cashier_id, cashier_identity, cashier_password, cashier_name, cashier_gender, cashier_tel, 
+    cashier_address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cashiers
+    where cashier_id = #{cashierId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cashiers
+    where cashier_id = #{cashierId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="cashier_id" keyProperty="cashierId" parameterType="com.example.HIS.models.Cashier" useGeneratedKeys="true">
+    insert into cashiers (cashier_identity, cashier_password, 
+      cashier_name, cashier_gender, cashier_tel, 
+      cashier_address)
+    values (#{cashierIdentity,jdbcType=VARCHAR}, #{cashierPassword,jdbcType=VARCHAR}, 
+      #{cashierName,jdbcType=VARCHAR}, #{cashierGender,jdbcType=INTEGER}, #{cashierTel,jdbcType=VARCHAR}, 
+      #{cashierAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="cashier_id" keyProperty="cashierId" parameterType="com.example.HIS.models.Cashier" useGeneratedKeys="true">
+    insert into cashiers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cashierIdentity != null">
+        cashier_identity,
+      </if>
+      <if test="cashierPassword != null">
+        cashier_password,
+      </if>
+      <if test="cashierName != null">
+        cashier_name,
+      </if>
+      <if test="cashierGender != null">
+        cashier_gender,
+      </if>
+      <if test="cashierTel != null">
+        cashier_tel,
+      </if>
+      <if test="cashierAddress != null">
+        cashier_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cashierIdentity != null">
+        #{cashierIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierPassword != null">
+        #{cashierPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierName != null">
+        #{cashierName,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierGender != null">
+        #{cashierGender,jdbcType=INTEGER},
+      </if>
+      <if test="cashierTel != null">
+        #{cashierTel,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierAddress != null">
+        #{cashierAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.Cashier">
+    update cashiers
+    <set>
+      <if test="cashierIdentity != null">
+        cashier_identity = #{cashierIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierPassword != null">
+        cashier_password = #{cashierPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierName != null">
+        cashier_name = #{cashierName,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierGender != null">
+        cashier_gender = #{cashierGender,jdbcType=INTEGER},
+      </if>
+      <if test="cashierTel != null">
+        cashier_tel = #{cashierTel,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierAddress != null">
+        cashier_address = #{cashierAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cashier_id = #{cashierId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.Cashier">
+    update cashiers
+    set cashier_identity = #{cashierIdentity,jdbcType=VARCHAR},
+      cashier_password = #{cashierPassword,jdbcType=VARCHAR},
+      cashier_name = #{cashierName,jdbcType=VARCHAR},
+      cashier_gender = #{cashierGender,jdbcType=INTEGER},
+      cashier_tel = #{cashierTel,jdbcType=VARCHAR},
+      cashier_address = #{cashierAddress,jdbcType=VARCHAR}
+    where cashier_id = #{cashierId,jdbcType=VARCHAR}
+  </update>
+</mapper>

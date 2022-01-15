@@ -1,0 +1,446 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li class="active"><a href="pay-main.html">收费</a></li>
+                                        <li><a href="pay-new-app.html">现场挂号</a></li>
+                                        <li><a href="pay-app.html">预约取号</a></li>
+                                        <li><a href="pay-history.html">缴费单记录</a></li>
+                                        <li><a href="pay-refund.html">退费</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="get-quote" style="float: right; margin-top: 10px;">
+                                <a href="staff-login.html" class="btn">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 90%; width: 100%; ">
+        <div class="main-sidebar">
+            <!-- Single Widget -->
+            <div class="single-widget search">
+                <div class="form search-input" style="margin-bottom: 10px">
+                    <input type="text" placeholder="输入单号" id="pay-search-input">
+                    <a class="button search-input " href="#" style="top: 0px; right: 0px;" onclick="searchItem()"><i
+                            class="fa fa-check"></i></a>
+                </div>
+            </div>
+            <!--/ End Single Widget -->
+        </div>
+        <div class="pay-list">
+            <table class="table pay-list-table">
+                <thead>
+                    <tr>
+                        <th>项目单号</th>
+                        <th>项目内容</th>
+                        <th>项目种类</th>
+                        <th>项目数量</th>
+                        <th>项目单价</th>
+                        <th>项目总价</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="item-list">
+                    <!-- <tr>
+                        <td>xxxxxxxxxxxxxxxx</td>
+                        <td>血常规</td>
+                        <td>检查</td>
+                        <td>1</td>
+                        <td>30.00</td>
+                        <td>30.00</td>
+                        <td><button class="btn pay-list-btn" onclick="deleteItem(this)">删除</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pay-function">
+            <div class="pay-sumup-titles">
+                <p class="pay-sumup-title" style="margin-top: 10px;">患者姓名：</p>
+                <p class="pay-sumup-title" style="margin-top: 20px;">患者身份证号：</p>
+                <p class="pay-sumup-title" style="margin-top: 50px;">待支付金额：</p>
+            </div>
+            <div class="pay-sumup-content">
+                <p><input id="patient-name" disabled value="啊啊啊"></p>
+                <p><input id="patient-id" disabled value="500106000000000000"></p>
+                <p><input id="patient-fund" disabled value="49.00"></p>
+            </div>
+
+            <div class="pay-btngroup">
+                <button class="btn pay-btn" style="background-color:#FE754A;">现金支付<p class="pay-btn-icon"><i
+                            class="icofont-money"></i></p></button>
+                <button class="btn pay-btn" style="background-color: #32B87D;">微信支付<p class="pay-btn-icon"><i
+                            class="fa fa-wechat"></i></p></button>
+                <button class="btn pay-btn" style="background-color: #2196F3;">支付宝支付<p class="pay-btn-icon"><i
+                            class="icofont-brand-alipay"></i></p></button>
+                <button class="btn pay-btn" style="background-color: #273c75;">取消支付<p class="pay-btn-icon"><i
+                            class="fa fa-close"></i></p></button>
+            </div>
+        </div>
+
+    </section>
+    <!--/ End portfolio -->
+
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+
+    <style type="text/css">
+        .main-sidebar {
+            margin-top: 0;
+            margin-left: 20px;
+        }
+
+        .single-widget.search {
+            padding: 0;
+            width: 40%;
+        }
+
+        .pay-list {
+            height: 450px;
+            overflow-y: scroll;
+            overflow-x: scroll;
+            margin-bottom: 30px;
+        }
+
+        .pay-list-table {
+            height: auto;
+        }
+
+        .pay-sumup {
+            width: 30%;
+        }
+
+        .pay-sumup-titles {
+            float: left;
+            width: 200px;
+        }
+
+        .pay-sumup-content {
+            float: left;
+        }
+
+        .pay-sumup-title {
+            color: black;
+            margin-left: 30px;
+            font-size: 20px;
+            text-align: left;
+            margin-right: 0;
+        }
+
+        #patient-name,
+        #patient-id {
+            margin-top: 10px;
+        }
+
+        #patient-fund {
+            margin-top: 10px;
+            font-size: 40px;
+            width: 300px;
+        }
+
+        .pay-list-btn {
+            font-size: 10px;
+            /* height: 20px; */
+            padding: 5px 20px;
+        }
+
+        .pay-btngroup {
+            float: left;
+            padding-left: 100px;
+        }
+
+        .pay-btn {
+            margin-right: 30px;
+            width: 180px;
+            height: 150px;
+            font-size: 20px;
+        }
+
+        .pay-btn-icon {
+            color: white;
+            margin-top: 5px;
+            font-size: 50px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            payMoney = 0
+            payWayList = ['现金支付', '微信支付', '支付宝支付']
+            itemList = []
+            // itemDes = []
+
+            checkPrice = {
+                '心电图': 30,
+                '颅脑平扫': 1000,
+                '胸部平扫': 500,
+                '胸部正侧位片': 500,
+                '胸腰段正侧位': 500,
+            }
+
+            var thisUrl = window.location.href
+            console.log(thisUrl)
+            if (thisUrl.indexOf('=') != -1) { // 跳转而来
+                // 参数,
+                var params = thisUrl.split('?')[1].split('&')
+                var rid = decodeURI(params[0].split('=')[1]).replace('"', '').replace('"', '')
+                var rtype = decodeURI(params[1].split('=')[1])
+                var pid = decodeURI(params[2].split('=')[1]).replace('"', '').replace('"', '')
+                var pname = decodeURIComponent(params[3].substring(6)).replace('"', '').replace('"', '')
+                // console.log(pname)
+                var money = rtype == '0' ? 5.00 : 30.00
+                rtype = rtype == '0' ? '普通号' : '专家号'
+
+                $('#item-list').append(
+                    '<tr>' +
+                    '<td>' + rid + '</td>' +
+                    '<td>' + rtype + '</td>' +
+                    '<td>挂号</td>' +
+                    '<td>' + 1 + '</td>' +
+                    '<td>' + money + '</td>' +
+                    '<td>' + money + '</td>' +
+                    '<td><button class="btn pay-list-btn" onclick="deleteItem(this)">删除</button></td>' +
+                    '</tr>'
+                )
+                itemList.push(rid)
+            }
+
+            $('#patient-id').val(pid)
+            $('#patient-fund').val(money)
+            $('#patient-name').val(pname)
+        });
+
+        function searchItem() {
+            var itemId = $('#pay-search-input').val()
+            if (itemList.indexOf(itemId) != -1) return;
+            $.ajax({
+                type: 'get',
+                url: '/pay_main?itemId=' + itemId,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    // itemList.append(data.itemId)
+                    var itemPrice = 0
+                    var itemPriceSum = 0
+                    // var itemId=''
+                    var itemType=''
+                    var itemName=''
+                    var itemNumer=0
+                    if (itemId.substring(0,1) == 'C') { // 检查
+                        // itemId=data.checkId
+                        itemType = '检查'
+                        itemName=data.checkDescription
+                        itemPrice = checkPrice[data.checkDescription]
+                        itemNumer=1
+                        itemPriceSum=itemPrice
+                    } else {
+                        // itemId=data.prescriptionId
+                        itemType = '处方'
+                        itemName=data.medicineName
+                        itemPrice = data.medicineMoney
+                        itemNumer=data.medicineNumber
+                        itemPriceSum=itemNumer*itemPrice
+                    }
+                    console.log(itemName)
+
+                    $('#item-list').append(
+                        '<tr>' +
+                        '<td>' + itemId + '</td>' +
+                        '<td>' + itemName + '</td>' +
+                        '<td>' + itemType + '</td>' +
+                        '<td>' + itemNumer + '</td>' +
+                        '<td>' + itemPrice + '</td>' +
+                        '<td>' + itemPriceSum + '</td>' +
+                        '<td><button class="btn pay-list-btn" onclick="deleteItem(this)">删除</button></td>' +
+                        '</tr>'
+                    )
+                    $('#patient-id').val(data.patientIdentity)
+                    $('#patient-name').val(data.patientName)
+                    payMoney += itemPriceSum
+                    itemList.push(itemId)
+                    // itemDes.push(itemName)
+                    $('#patient-fund').val(payMoney)
+                    $('#pay-search-input').val('')
+                }
+            })
+        }
+
+        function deleteItem(e) {
+            var itemId = $(e).parent().parent().children()[0]
+            var itemPrice = $(e).parent().parent().children()[5].innerHTML * 1
+            var i = itemList.indexOf(itemId)
+            itemList.splice(i, 1)
+            // itemDes.splice(i, 1)
+            $(e).parent().parent().remove()
+
+            // 改变价格
+            var sum = $('#patient-fund').val() * 1
+            sum -= itemPrice
+            payMoney -= itemPrice
+            $('#patient-fund').val(sum)
+        }
+
+        $('.pay-btn').click(function () {
+            if($(this).text() == '取消支付') {
+                var option = confirm('确认取消支付？')
+                if(option) {
+                    location.reload()
+                }
+                return;
+            }
+            var payWay = payWayList.indexOf($(this).text())
+            var data_ = {}
+            data_['payItem'] = ''
+            for (let i = 0; i < itemList.length; i++) {
+
+                data_['payItem'] += ',' + itemList[i]
+            }
+            data_['payItem'] = data_['payItem'].substring(1)
+            data_['patientId'] = $('#patient-id').val()
+            data_['payWay'] = payWay
+            data_['payMoney'] = payMoney
+            console.log(data_)
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: data_,
+                url: '/pay',
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        alert('缴费成功！')
+                        location.href = 'pay-main.html'
+                    }
+                }
+            })
+        })
+
+
+    </script>
+
+
+
+</body>
+
+
+</html>

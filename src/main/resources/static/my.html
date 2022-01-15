@@ -1,0 +1,797 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+
+        <!-- Middle Header -->
+        <div class="middle-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <a href="index2.html"><img src="img/logo.png" alt="#"></a>
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-12">
+                        <div class="widget-main">
+                            <!-- Single Widget -->
+                            <div class="single-widget">
+                                <i class="icofont-ui-call"></i>
+                                <p>电话</p>
+                                <h4>(023)6519 0120</h4>
+                            </div>
+                            <!--/ End Single Widget -->
+                            <!-- Single Widget -->
+                            <div class="single-widget">
+                                <i class="icofont-location-pin"></i>
+                                <p>地址</p>
+                                <h4>重庆市沙坪坝区双碑自由村100号</h4>
+                            </div>
+                            <!--/ End Single Widget -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Middle Header -->
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="index2.html">首页</a></li>
+                                        <li><a href="#">医院介绍</a></li>
+                                        <li><a href="#">科室简介</a></li>
+                                        <li><a href="#">专家教授</a></li>
+                                        <li><a href="#">联系我们</a></li>
+                                        <li><a href="staff-login.html">员工入口</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <section class="blog grid section" style="margin-top: -60px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12">
+                    <div class="main-sidebar">
+                        <!-- Single Widget -->
+                        <div class="single-widget category">
+                            <h3 class="title">我的预约记录</h3>
+                            <ul class="categor-list">
+                                <li class="active" id="allrecords"><a href="#" onclick="showAllrecords()">全部记录</a></li>
+                                <li id="confirmed"><a href="#" onclick="showConfirmed()">待确认</a></li>
+                                <li id="completed"><a href="#" onclick="showCompleted()">已完成</a></li>
+                                <li id="cancelled"><a href="#" onclick="showCancelled()">已取消</a></li>
+                            </ul>
+                        </div>
+                        <!--/ End Single Widget -->
+                    </div>
+                </div>
+
+                <!-- Start allrecords -->
+                <div class="func-option doc-allrecords" id="doc-allrecords" style="display: block;" class="col-lg-9 col-12">
+                    <div class="main-sidebar">
+                        <div class="single-widget category">
+                            <h3 class="title">全部记录</h3>
+                            <div>
+                                <table class="table" id="allrecordsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>预约单号</th>
+                                            <th>预约项目</th>
+                                            <th>预约就诊时间</th>
+                                            <th>当前状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End allrecords -->
+
+                <!-- Start confirmed -->
+                <div class="func-option doc-confirmed" id="doc-confirmed" style="display: none;" class="col-lg-9 col-12">
+                    <div class="main-sidebar">
+                        <div class="single-widget category">
+                            <h3 class="title">待确认</h3>
+                            <div>
+                                <table class="table" id="confirmedTable">
+                                    <thead>
+                                    <tr>
+                                        <th>预约单号</th>
+                                        <th>预约项目</th>
+                                        <th>预约就诊时间</th>
+                                        <th>当前状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ End Single Widget -->
+                    </div>
+                </div>
+                <!-- End confirmed -->
+
+                <!-- Start completed -->
+                <div class="func-option doc-completed" id="doc-completed" style="display: none;" class="col-lg-9 col-12">
+                    <div class="main-sidebar">
+                        <div class="single-widget category">
+                            <h3 class="title">已完成</h3>
+                            <div>
+                                <table class="table" id="completedTable">
+                                    <thead>
+                                    <tr>
+                                        <th>预约单号</th>
+                                        <th>预约项目</th>
+                                        <th>预约就诊时间</th>
+                                        <th>当前状态</th>
+                                    </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ End Single Widget -->
+                    </div>
+                </div>
+                <!-- End completed -->
+
+                <!-- Start cancelled -->
+                <div class="func-option doc-cancelled" id="doc-cancelled" style="display: none;" class="col-lg-9 col-12">
+                    <div class="main-sidebar">
+                        <div class="single-widget category">
+                            <h3 class="title">已取消</h3>
+                            <div>
+                                <table class="table" id="cancelledTable">
+                                    <thead>
+                                    <tr>
+                                        <th>预约单号</th>
+                                        <th>预约项目</th>
+                                        <th>预约就诊时间</th>
+                                        <th>当前状态</th>
+                                    </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ End Single Widget -->
+                    </div>
+                </div>
+                <!-- End cancelled -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer id="footer" class="footer ">
+        <!-- Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer">
+                            <h2>About Us</h2>
+                            <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut
+                                labore dolore magna.</p>
+                            <!-- Social -->
+                            <ul class="social">
+                                <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#"><i class="icofont-google-plus"></i></a></li>
+                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                <li><a href="#"><i class="icofont-vimeo"></i></a></li>
+                                <li><a href="#"><i class="icofont-pinterest"></i></a></li>
+                            </ul>
+                            <!-- End Social -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer f-link">
+                            <h2>Quick Links</h2>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Our
+                                                Cases</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Other
+                                                Links</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-caret-right"
+                                                    aria-hidden="true"></i>Consuling</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Finance</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-caret-right"
+                                                    aria-hidden="true"></i>Testimonials</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact
+                                                Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer">
+                            <h2>Open Hours</h2>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
+                            <ul class="time-sidual">
+                                <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
+                                <li class="day">Saturday <span>9.00-18.30</span></li>
+                                <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer">
+                            <h2>Newsletter</h2>
+                            <p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit
+                                amet, consectetur adipisicing elit,</p>
+                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                <input name="email" placeholder="Email Address" class="common-input"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'"
+                                    required="" type="email">
+                                <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Footer Top -->
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="copyright-content">
+                            <p>Copyright &copy; 2020.Company name All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Copyright -->
+    </footer>
+    <!--/ End Footer Area -->
+
+    <!-- 遮罩层！ -->
+    <div id="shadow" style="display: none;"></div>
+
+    <!-- 确认取消预约的子窗口 -->
+    <div id="box-confirm-cancel" style="display: none;">
+        <div class="container">
+            <div class="main-sidebar" style="text-align: center;">
+                <div class="single-widget category">
+                    <i class="icofont-warning" style="font-size: 100px; color: #FE754A;"></i>
+                    <h3>您确定要取消预约吗？</h3>
+                    <p>一周内取消两次预约，即被列入预约挂号黑名单。</p>
+                    <div class="btn-cancel-group">
+                        <button class="btn btn-confirm-cancel" onclick="cancel_cancel()">暂不取消</button>
+                        <button class="btn btn-cancel-cancel" onclick="confirm_cancel()">确认取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+    <style type="text/css">
+        .button-function {
+            font-size: 10px;
+            height: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #shadow {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 998;
+            background-color: #000;
+            opacity: 0.6;
+            display: none;
+        }
+
+        #box-confirm-cancel {
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -250px;
+            margin-top: -150px;
+            z-index: 999;
+        }
+
+        .btn-cancel-group {
+            margin: 20px;
+        }
+
+        .btn-confirm-cancel {
+            width: 120px;
+        }
+
+        .btn-cancel-cancel {
+            background: #2C2D3F;
+            margin-left: 50px;
+            width: 120px;
+        }
+
+        .func-option {
+            height: 60%;
+            width: 800px;
+        }
+
+        .doc-allrecords,
+        .doc-confirmed,
+        .doc-completed,
+        .doc-cancelled
+
+    </style>
+
+    <script>
+        function cancel_appointment() {//遮罩层，显示提示窗口
+            document.getElementById('shadow').style.display = 'block';
+            document.getElementById('box-confirm-cancel').style.display = 'block';
+        }
+
+        function cancel_cancel() {//暂不取消
+            document.getElementById('shadow').style.display = 'none';
+            document.getElementById('box-confirm-cancel').style.display = 'none';
+        }
+
+        function confirm_cancel() {// 确认取消
+            document.getElementById('shadow').style.display = 'none';
+            document.getElementById('box-confirm-cancel').style.display = 'none';
+
+        }
+
+        function confirmCancel(e){
+            var reserveId = $(e).parent().parent().data('id')
+            var ans = confirm('取消预约后不可恢复。确认取消？')
+            if(!ans) return;
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: {'reserveId': reserveId},
+                url: "/appoint_cancel",
+                async: false,
+                success: function(data) {
+                    $(e).parent().parent().remove()
+                    alert('取消成功！')
+                }
+            })
+        }
+
+
+        function showAllrecords() {
+            if ($("allrecords").hasClass('active')) return;
+
+            $("#allrecords").addClass('active')
+            if ($("#confirmed").hasClass) $("#confirmed").removeClass('active')
+            if ($("#completed").hasClass) $("#completed").removeClass('active')
+            if ($("#cancelled").hasClass) $("#cancelled").removeClass('active')
+
+            $("#doc-allrecords").css('display','block')
+            $("#doc-confirmed").css('display','none')
+            $("#doc-completed").css('display','none')
+            $("#doc-cancelled").css('display','none')
+
+            var temp = '';
+            $.ajax({
+                type:"get",
+                url:"/appoint_history",
+                dataType:"json",
+                success:function(data) {
+                    console.log(data);
+                    for(var $i = 0; $i < data.length; $i++) {
+                        var d = new Date(data[$i].reserveTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time = d.getHours()
+                        if (time == '9') time = '09:00~09:59'
+                        else time = time + ':00~' + time + ':59'
+                        if(data[$i].reserveType=="0")//如果预约的是专家号
+                        {
+                            if (data[$i].reserveState == "-1") {//如果此时的状态是已取消
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + "专家号-" + data[$i].doctorName + '</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已取消" + '</td>' +
+                                    '<td>' + '<button class="btn button-function"disabled>' + "取消预约" + '</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                            if (data[$i].reserveState == "0") {//如果此时的状态是待确认
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + "专家号-" + data[$i].doctorName + '</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "待确认" + '</td>' +
+                                    '<td>' + '<button class="btn button-function" onclick="confirmCancel(this)" >' + "取消预约" + '</button>' + '</td>' +
+                                    '</tr>';
+
+                            }
+                            if (data[$i].reserveState == "1") {//如果此时的状态是已完成
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + "专家号-" + data[$i].doctorName + '</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已完成" + '</td>' +
+                                    '<td>' + '<button class="btn button-function"disabled>' + "取消预约" + '</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                        }
+
+                        else if(data[$i].reserveType=="1")//如果预约的是科室号
+                        {
+                            if(data[$i].reserveState=="-1"){//如果此时的状态是已取消
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + data[$i].departmentName+"-"+"普通号" + '</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已取消" + '</td>' +
+                                    '<td>' + '<button class="btn button-function"disabled>'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                            if(data[$i].reserveState=="0"){//如果此时的状态是待确认
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + data[$i].departmentName+"-"+"普通号" +'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "待确认" + '</td>' +
+                                    '<td>' + '<button class="btn button-function" onclick="confirmCancel(this)" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                            if(data[$i].reserveState=="1"){//如果此时的状态是已完成
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + data[$i].departmentName+"-"+"普通号" +'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已完成" + '</td>' +
+                                    '<td>' + '<button class="btn button-function"disabled>'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                        }
+
+                    }
+                    console.log(temp);
+                    $("#allrecordsTable tr:not(:first)").html(""); /*  除了第一行tr的内容，其余内容清空，防止获取重复的数据  */
+                    $("#allrecordsTable").append(temp);
+                }
+            });
+        }
+
+        function showConfirmed() {
+            if ($("#confirmed").hasClass('active')) return;
+
+            $("#confirmed").addClass('active')
+            if ($("#allrecords").hasClass('active')) $("#allrecords").removeClass('active')
+            if ($("#completed").hasClass('active')) $("#completed").removeClass('active')
+            if ($("#cancelled").hasClass('active')) $("#cancelled").removeClass('active')
+
+            $("#doc-allrecords").css('display','none')
+            $("#doc-confirmed").css('display','block')
+            $("#doc-completed").css('display','none')
+            $("#doc-cancelled").css('display','none')
+
+            var temp = '';
+            $.ajax({
+                type:"get",
+                url:"/appoint_history",
+                dataType:"json",
+                success:function(data) {
+                    console.log(data);
+                    for(var $i = 0; $i < data.length; $i++) {
+                        var d = new Date(data[$i].reserveTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time = d.getHours()
+                        if (time == '9') time = '09:00~09:59'
+                        else time = time + ':00~' + time + ':59'
+                        if(data[$i].reserveState=="0"){//如果此时的状态是待确认
+                            if(data[$i].reserveType=="0"){//如果预约的是专家号
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + "专家号-" + data[$i].doctorName+'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "待确认" + '</td>' +
+                                    '<td>' + '<button class="btn button-function" onclick="confirmCancel(this)" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                            if(data[$i].reserveType=="1"){//如果预约的是科室号
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + data[$i].departmentName+"-"+"普通号" +'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "待确认" + '</td>' +
+                                    '<td>' + '<button class="btn button-function" onclick="confirmCancel(this)" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                        }
+
+                    }
+                    console.log(temp);
+                    $("#confirmedTable tr:not(:first)").html(""); /*  除了第一行tr的内容，其余内容清空，防止获取重复的数据  */
+                    $("#confirmedTable").append(temp);
+                }
+            });
+        }
+
+        function showCompleted() {
+            if ($("#completed").hasClass('active')) return;
+
+            $("#completed").addClass('active')
+            if ($("#allrecords").hasClass('active')) $("#allrecords").removeClass('active')
+            if ($("#confirmed").hasClass('active')) $("#confirmed").removeClass('active')
+            if ($("#cancelled").hasClass('active')) $("#cancelled").removeClass('active')
+
+            $("#doc-allrecords").css('display','none')
+            $("#doc-confirmed").css('display','none')
+            $("#doc-completed").css('display','block')
+            $("#doc-cancelled").css('display','none')
+
+            var temp = '';
+            $.ajax({
+                type:"get",
+                url:"/appoint_history",
+                dataType:"json",
+                success:function(data) {
+                    console.log(data);
+                    for(var $i = 0; $i < data.length; $i++) {
+                        var d = new Date(data[$i].reserveTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time = d.getHours()
+                        if (time == '9') time = '09:00~09:59'
+                        else time = time + ':00~' + time + ':59'
+                        if(data[$i].reserveState=="1"){//如果此时的状态是已完成
+                            if(data[$i].reserveType=="0"){//如果预约的是专家号
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + "专家号-" + data[$i].doctorName+'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已完成" + '</td>' +
+                                    //'<td>' + '<button class="btn button-function"disabled" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                            if(data[$i].reserveType=="1"){//如果预约的是科室号
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + data[$i].departmentName+"-"+"普通号" +'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已完成" + '</td>' +
+                                    //'<td>' + '<button class="btn button-function"disabled" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                        }
+                    }
+                    console.log(temp);
+                    $("#completedTable tr:not(:first)").html(""); /*  除了第一行tr的内容，其余内容清空，防止获取重复的数据  */
+                    $("#completedTable").append(temp);
+
+                }
+            });
+        }
+
+        function showCancelled() {
+            if ($("#cancelled").hasClass('active')) return;
+
+            $("#cancelled").addClass('active')
+            if ($("#allrecords").hasClass('active')) $("#allrecords").removeClass('active')
+            if ($("#confirmed").hasClass('active')) $("#confirmed").removeClass('active')
+            if ($("#completed").hasClass('active')) $("#completed").removeClass('active')
+
+            $("#doc-allrecords").css('display','none')
+            $("#doc-confirmed").css('display','none')
+            $("#doc-completed").css('display','none')
+            $("#doc-cancelled").css('display','block')
+
+            var temp = '';
+            $.ajax({
+                type:"get",
+                url:"/appoint_history",
+                dataType:"json",
+                success:function(data) {
+                    console.log(data);
+                    for(var $i = 0; $i < data.length; $i++) {
+                        var d = new Date(data[$i].reserveTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time = d.getHours()
+                        if (time == '9') time = '09:00~09:59'
+                        else time = time + ':00~' + time + ':59'
+                        if(data[$i].reserveState=="-1"){//如果此时的状态是已取消
+                            if(data[$i].reserveType=="0"){//如果预约的是专家号
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + "专家号-" + data[$i].doctorName+'</td>' +
+                                    '<td>' + time + '</td>' +
+                                    '<td>' + "已取消" + '</td>' +
+                                    //'<td>' + '<button class="btn button-function"disabled" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                            if(data[$i].reserveType=="1"){//如果预约的是科室号
+                                temp +=
+                                    '<tr data-id="' + data[$i].reserveId + '">' +
+                                    '<td>' + data[$i].reserveId + '</td>' +
+                                    '<td>' + data[$i].departmentName+"-"+"普通号" +'</td>' +
+                                    '<td>' +  time + '</td>' +
+                                    '<td>' + "已取消" + '</td>' +
+                                    //'<td>' + '<button class="btn button-function"disabled" >'+"取消预约"+'</button>' + '</td>' +
+                                    '</tr>';
+                            }
+                        }
+                    }
+                    console.log(temp);
+                    $("#cancelledTable tr:not(:first)").html(""); /*  除了第一行tr的内容，其余内容清空，防止获取重复的数据  */
+                    $("#cancelledTable").append(temp);
+
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

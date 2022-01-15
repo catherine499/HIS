@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.ReturnMedicineTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.ReturnMedicineTable">
+    <id column="return_id" jdbcType="INTEGER" property="returnId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="pharmacist_id" jdbcType="VARCHAR" property="pharmacistId" />
+    <result column="prescription_id" jdbcType="INTEGER" property="prescriptionId" />
+    <result column="medicine_id" jdbcType="VARCHAR" property="medicineId" />
+    <result column="return_number" jdbcType="INTEGER" property="returnNumber" />
+    <result column="return_time" jdbcType="TIMESTAMP" property="returnTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    return_id, patient_identity, pharmacist_id, prescription_id, medicine_id, return_number, 
+    return_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from return_medicine_tables
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from return_medicine_tables
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="return_id" keyProperty="returnId" parameterType="com.example.HIS.models.ReturnMedicineTable" useGeneratedKeys="true">
+    insert into return_medicine_tables (patient_identity, pharmacist_id, prescription_id, 
+      medicine_id, return_number, return_time
+      )
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{pharmacistId,jdbcType=VARCHAR}, #{prescriptionId,jdbcType=INTEGER}, 
+      #{medicineId,jdbcType=VARCHAR}, #{returnNumber,jdbcType=INTEGER}, #{returnTime,jdbcType=TIMESTAMP}
+      );
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="returnId">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" keyColumn="return_id" keyProperty="returnId" parameterType="com.example.HIS.models.ReturnMedicineTable" useGeneratedKeys="true">
+    insert into return_medicine_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="pharmacistId != null">
+        pharmacist_id,
+      </if>
+      <if test="prescriptionId != null">
+        prescription_id,
+      </if>
+      <if test="medicineId != null">
+        medicine_id,
+      </if>
+      <if test="returnNumber != null">
+        return_number,
+      </if>
+      <if test="returnTime != null">
+        return_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistId != null">
+        #{pharmacistId,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionId != null">
+        #{prescriptionId,jdbcType=INTEGER},
+      </if>
+      <if test="medicineId != null">
+        #{medicineId,jdbcType=VARCHAR},
+      </if>
+      <if test="returnNumber != null">
+        #{returnNumber,jdbcType=INTEGER},
+      </if>
+      <if test="returnTime != null">
+        #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.ReturnMedicineTable">
+    update return_medicine_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistId != null">
+        pharmacist_id = #{pharmacistId,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionId != null">
+        prescription_id = #{prescriptionId,jdbcType=INTEGER},
+      </if>
+      <if test="medicineId != null">
+        medicine_id = #{medicineId,jdbcType=VARCHAR},
+      </if>
+      <if test="returnNumber != null">
+        return_number = #{returnNumber,jdbcType=INTEGER},
+      </if>
+      <if test="returnTime != null">
+        return_time = #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.ReturnMedicineTable">
+    update return_medicine_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      pharmacist_id = #{pharmacistId,jdbcType=VARCHAR},
+      prescription_id = #{prescriptionId,jdbcType=INTEGER},
+      medicine_id = #{medicineId,jdbcType=VARCHAR},
+      return_number = #{returnNumber,jdbcType=INTEGER},
+      return_time = #{returnTime,jdbcType=TIMESTAMP}
+    where return_id = #{returnId,jdbcType=INTEGER}
+  </update>
+</mapper>

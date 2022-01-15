@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.ViolateTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.ViolateTable">
+    <id column="violate_id" jdbcType="INTEGER" property="violateId" />
+    <result column="reserve_id" jdbcType="INTEGER" property="reserveId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    violate_id, reserve_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from violate_tables
+    where violate_id = #{violateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from violate_tables
+    where violate_id = #{violateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="violate_id" keyProperty="violateId" parameterType="com.example.HIS.models.ViolateTable" useGeneratedKeys="true">
+    insert into violate_tables (reserve_id)
+    values (#{reserveId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="violate_id" keyProperty="violateId" parameterType="com.example.HIS.models.ViolateTable" useGeneratedKeys="true">
+    insert into violate_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reserveId != null">
+        reserve_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reserveId != null">
+        #{reserveId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.ViolateTable">
+    update violate_tables
+    <set>
+      <if test="reserveId != null">
+        reserve_id = #{reserveId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where violate_id = #{violateId,jdbcType=INTEGER}
+  </update>
+<!--  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.ViolateTable">-->
+<!--    update violate_tables-->
+<!--    set reserve_id = #{reserveId,jdbcType=INTEGER}-->
+<!--    where violate_id = #{violateId,jdbcType=INTEGER}-->
+<!--  </update>-->
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.HIS.generate.RemainDeptNumberDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.RemainDeptNumber">
+    <id column="remain_dept_number_id" jdbcType="INTEGER" property="remainDeptNumberId" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    remain_dept_number_id, department_id, `time`, `number`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from remain_dept_numbers
+    where remain_dept_number_id = #{remainDeptNumberId,jdbcType=INTEGER}
+  </select>
+  <select id="getAll" resultType="com.example.HIS.models.RemainDeptNumber" resultMap="BaseResultMap" >
+    select *
+    from remain_dept_numbers
+  </select>
+
+  <select id="selectByDeptId" resultType="com.example.HIS.models.RemainDeptNumber" resultMap="BaseResultMap" >
+    select * from remain_dept_numbers where department_id=#{DeptId,jdbcType=VARCHAR}
+  </select>
+    <select id="getAllToday" resultType="com.example.HIS.models.RemainDeptNumber"  resultMap="BaseResultMap" >
+        select * from remain_dept_numbers where <![CDATA[ DATE_FORMAT(time, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+--                                           and time>NOW()
+                                          ]]>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from remain_dept_numbers
+    where remain_dept_number_id = #{remainDeptNumberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="remain_dept_number_id" keyProperty="remainDeptNumberId" parameterType="com.example.HIS.models.RemainDeptNumber" useGeneratedKeys="true">
+    insert into remain_dept_numbers (department_id, `time`, `number`
+      )
+    values (#{departmentId,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{number,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="remain_dept_number_id" keyProperty="remainDeptNumberId" parameterType="com.example.HIS.models.RemainDeptNumber" useGeneratedKeys="true">
+    insert into remain_dept_numbers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.RemainDeptNumber">
+    update remain_dept_numbers
+    <set>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=INTEGER},
+      </if>
+    </set>
+    where remain_dept_number_id = #{remainDeptNumberId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.RemainDeptNumber">
+    update remain_dept_numbers
+    set department_id = #{departmentId,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=TIMESTAMP},
+      `number` = #{number,jdbcType=INTEGER}
+    where remain_dept_number_id = #{remainDeptNumberId,jdbcType=INTEGER}
+  </update>
+</mapper>

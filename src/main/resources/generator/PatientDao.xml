@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.PatientDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.Patient">
+    <id column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="patient_password" jdbcType="VARCHAR" property="patientPassword" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="patient_gender" jdbcType="INTEGER" property="patientGender" />
+    <result column="patient_tel" jdbcType="VARCHAR" property="patientTel" />
+    <result column="patient_address" jdbcType="VARCHAR" property="patientAddress" />
+    <result column="patient_is_black" jdbcType="INTEGER" property="patientIsBlack" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    patient_identity, patient_password, patient_name, patient_gender, patient_tel, patient_address, 
+    patient_is_black
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from patients
+    where patient_identity = #{patientIdentity,jdbcType=VARCHAR}
+  </select>
+    <select id="getAll" resultType="com.example.HIS.models.Patient" resultMap="BaseResultMap">
+      select * from patients
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from patients
+    where patient_identity = #{patientIdentity,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="patient_identity" keyProperty="patientIdentity" parameterType="com.example.HIS.models.Patient" useGeneratedKeys="false">
+    insert into patients (patient_password, patient_name, patient_gender, 
+      patient_tel, patient_address, patient_is_black
+      )
+    values (#{patientPassword,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{patientGender,jdbcType=INTEGER}, 
+      #{patientTel,jdbcType=VARCHAR}, #{patientAddress,jdbcType=VARCHAR}, #{patientIsBlack,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="patient_identity" keyProperty="patientIdentity" parameterType="com.example.HIS.models.Patient" useGeneratedKeys="false">
+    insert into patients
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="patientPassword != null">
+        patient_password,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="patientGender != null">
+        patient_gender,
+      </if>
+      <if test="patientTel != null">
+        patient_tel,
+      </if>
+      <if test="patientAddress != null">
+        patient_address,
+      </if>
+      <if test="patientIsBlack != null">
+        patient_is_black,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="patientPassword != null">
+        #{patientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientGender != null">
+        #{patientGender,jdbcType=INTEGER},
+      </if>
+      <if test="patientTel != null">
+        #{patientTel,jdbcType=VARCHAR},
+      </if>
+      <if test="patientAddress != null">
+        #{patientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="patientIsBlack != null">
+        #{patientIsBlack,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.Patient">
+    update patients
+    <set>
+      <if test="patientPassword != null">
+        patient_password = #{patientPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="patientGender != null">
+        patient_gender = #{patientGender,jdbcType=INTEGER},
+      </if>
+      <if test="patientTel != null">
+        patient_tel = #{patientTel,jdbcType=VARCHAR},
+      </if>
+      <if test="patientAddress != null">
+        patient_address = #{patientAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="patientIsBlack != null">
+        patient_is_black = #{patientIsBlack,jdbcType=INTEGER},
+      </if>
+    </set>
+    where patient_identity = #{patientIdentity,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.Patient">
+    update patients
+    set patient_password = #{patientPassword,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      patient_gender = #{patientGender,jdbcType=INTEGER},
+      patient_tel = #{patientTel,jdbcType=VARCHAR},
+      patient_address = #{patientAddress,jdbcType=VARCHAR},
+      patient_is_black = #{patientIsBlack,jdbcType=INTEGER}
+    where patient_identity = #{patientIdentity,jdbcType=VARCHAR}
+  </update>
+</mapper>

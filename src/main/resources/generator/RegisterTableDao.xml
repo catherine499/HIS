@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.RegisterTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.RegisterTable">
+    <id column="register_id" jdbcType="INTEGER" property="registerId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="register_type" jdbcType="INTEGER" property="registerType" />
+    <result column="register_queue_type" jdbcType="INTEGER" property="registerQueueType" />
+    <result column="register_ number" jdbcType="INTEGER" property="registerNumber" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    register_id, patient_identity, department_id, doctor_id, register_type, register_queue_type, 
+    `register_ number`, register_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from register_tables
+    where register_id = #{registerId,jdbcType=INTEGER}
+  </select>
+    <select id="selectByPId" resultType="com.example.HIS.models.RegisterTable" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from register_tables
+      where patient_identity = #{patientIdentity,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from register_tables
+    where register_id = #{registerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="register_id" keyProperty="registerId" parameterType="com.example.HIS.models.RegisterTable" useGeneratedKeys="true">
+    insert into register_tables (patient_identity, department_id, doctor_id,
+      register_type, register_queue_type, `register_ number`, 
+      register_time)
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, 
+      #{registerType,jdbcType=INTEGER}, #{registerQueueType,jdbcType=INTEGER}, #{registerNumber,jdbcType=INTEGER}, 
+      #{registerTime,jdbcType=TIMESTAMP});
+--     select LAST_INSERT_ID();
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="registerId" keyColumn="register_id">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" keyColumn="register_id" keyProperty="registerId" parameterType="com.example.HIS.models.RegisterTable" useGeneratedKeys="true">
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="registerId" keyColumn="register_id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into register_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="registerType != null">
+        register_type,
+      </if>
+      <if test="registerQueueType != null">
+        register_queue_type,
+      </if>
+      <if test="registerNumber != null">
+        `register_ number`,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerType != null">
+        #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="registerQueueType != null">
+        #{registerQueueType,jdbcType=INTEGER},
+      </if>
+      <if test="registerNumber != null">
+        #{registerNumber,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.RegisterTable">
+    update register_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerType != null">
+        register_type = #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="registerQueueType != null">
+        register_queue_type = #{registerQueueType,jdbcType=INTEGER},
+      </if>
+      <if test="registerNumber != null">
+        `register_ number` = #{registerNumber,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where register_id = #{registerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.RegisterTable">
+    update register_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      register_type = #{registerType,jdbcType=INTEGER},
+      register_queue_type = #{registerQueueType,jdbcType=INTEGER},
+      `register_ number` = #{registerNumber,jdbcType=INTEGER},
+      register_time = #{registerTime,jdbcType=TIMESTAMP}
+    where register_id = #{registerId,jdbcType=INTEGER}
+  </update>
+</mapper>

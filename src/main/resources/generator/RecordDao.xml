@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.RecordDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.Record">
+    <id column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="symptom_description" jdbcType="VARCHAR" property="symptomDescription" />
+    <result column="prescription_ids" jdbcType="VARCHAR" property="prescriptionIds" />
+    <result column="check_ids" jdbcType="VARCHAR" property="checkIds" />
+    <result column="bill_time" jdbcType="TIMESTAMP" property="billTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    record_id, patient_identity, doctor_id, symptom_description, prescription_ids, check_ids, 
+    bill_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from records
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+    <select id="getMaxId" resultType="java.lang.Integer">
+      select ifnull(MAX(record_id),0)
+      FROM records
+    </select>
+  <select id="findByPatientId" resultType="com.example.HIS.models.Record" resultMap="BaseResultMap">
+    select * from records WHERE patient_identity =#{patientId}
+  </select>
+
+  <resultMap id="ResultMap1" type="com.example.HIS.DTO.RecordHistoryDto">
+    <id column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="bill_time" jdbcType="TIMESTAMP" property="billTime" />
+  </resultMap>
+
+  <select id="findHistoryByPatientId" resultMap="ResultMap1">
+        select records.record_id,doctors.department_id,doctors.doctor_name,records.bill_time
+        from doctors,records
+        where records.doctor_id=doctors.doctor_id and records.patient_identity=#{patientId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from records
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="record_id" keyProperty="recordId" parameterType="com.example.HIS.models.Record" useGeneratedKeys="true">
+    insert into records (patient_identity, doctor_id, symptom_description, 
+      prescription_ids, check_ids, bill_time
+      )
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, #{symptomDescription,jdbcType=VARCHAR}, 
+      #{prescriptionIds,jdbcType=VARCHAR}, #{checkIds,jdbcType=VARCHAR}, #{billTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="record_id" keyProperty="recordId" parameterType="com.example.HIS.models.Record" useGeneratedKeys="true">
+    insert into records
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="symptomDescription != null">
+        symptom_description,
+      </if>
+      <if test="prescriptionIds != null">
+        prescription_ids,
+      </if>
+      <if test="checkIds != null">
+        check_ids,
+      </if>
+      <if test="billTime != null">
+        bill_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="symptomDescription != null">
+        #{symptomDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionIds != null">
+        #{prescriptionIds,jdbcType=VARCHAR},
+      </if>
+      <if test="checkIds != null">
+        #{checkIds,jdbcType=VARCHAR},
+      </if>
+      <if test="billTime != null">
+        #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.Record">
+    update records
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="symptomDescription != null">
+        symptom_description = #{symptomDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionIds != null">
+        prescription_ids = #{prescriptionIds,jdbcType=VARCHAR},
+      </if>
+      <if test="checkIds != null">
+        check_ids = #{checkIds,jdbcType=VARCHAR},
+      </if>
+      <if test="billTime != null">
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.Record">
+    update records
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      symptom_description = #{symptomDescription,jdbcType=VARCHAR},
+      prescription_ids = #{prescriptionIds,jdbcType=VARCHAR},
+      check_ids = #{checkIds,jdbcType=VARCHAR},
+      bill_time = #{billTime,jdbcType=TIMESTAMP}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>

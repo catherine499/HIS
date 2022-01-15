@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.PrescriptionTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.PrescriptionTable">
+    <id column="prescription_id" jdbcType="INTEGER" property="prescriptionId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="medicine_id" jdbcType="VARCHAR" property="medicineId" />
+    <result column="medicine_number" jdbcType="INTEGER" property="medicineNumber" />
+    <result column="bill_time" jdbcType="TIMESTAMP" property="billTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    prescription_id, patient_identity, doctor_id, medicine_id, medicine_number, bill_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from prescription_tables
+    where prescription_id = #{prescriptionId,jdbcType=INTEGER}
+  </select>
+    <select id="getMaxId" resultType="java.lang.Integer">
+      select ifnull(MAX(prescription_id),0)
+      FROM prescription_tables
+    </select>
+
+  <resultMap id="ResultMap1" type="com.example.HIS.DTO.PrescriptionTableDto">
+    <id column="prescription_id" jdbcType="INTEGER" property="prescriptionId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="medicine_id" jdbcType="VARCHAR" property="medicineId" />
+    <result column="medicine_name" jdbcType="VARCHAR" property="medicineName" />
+    <result column="medicine_number" jdbcType="INTEGER" property="medicineNumber" />
+    <result column="medicine_money" jdbcType="FLOAT" property="medicineMoney" />
+  </resultMap>
+    <select id="selectPrescriptionTableDtoById" resultType="com.example.HIS.DTO.PrescriptionTableDto" resultMap="ResultMap1">
+      select prescription_tables.prescription_id,patients.patient_identity,patients.patient_name,
+             medicines.medicine_id,medicines.medicine_name,prescription_tables.medicine_number,medicines.medicine_money
+      from prescription_tables,medicines,patients
+      where prescription_tables.prescription_id=#{prescriptionId,jdbcType=INTEGER}
+        and prescription_tables.patient_identity=patients.patient_identity
+        and medicines.medicine_id=prescription_tables.medicine_id
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from prescription_tables
+    where prescription_id = #{prescriptionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="prescription_id" keyProperty="prescriptionId" parameterType="com.example.HIS.models.PrescriptionTable" useGeneratedKeys="true">
+    insert into prescription_tables (patient_identity, doctor_id, medicine_id, 
+      medicine_number, bill_time)
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, #{medicineId,jdbcType=VARCHAR}, 
+      #{medicineNumber,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP});
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="prescriptionId">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" keyColumn="prescription_id" keyProperty="prescriptionId" parameterType="com.example.HIS.models.PrescriptionTable" useGeneratedKeys="true">
+    insert into prescription_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="medicineId != null">
+        medicine_id,
+      </if>
+      <if test="medicineNumber != null">
+        medicine_number,
+      </if>
+      <if test="billTime != null">
+        bill_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineId != null">
+        #{medicineId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineNumber != null">
+        #{medicineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="billTime != null">
+        #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.PrescriptionTable">
+    update prescription_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineId != null">
+        medicine_id = #{medicineId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineNumber != null">
+        medicine_number = #{medicineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="billTime != null">
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where prescription_id = #{prescriptionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.PrescriptionTable">
+    update prescription_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      medicine_id = #{medicineId,jdbcType=VARCHAR},
+      medicine_number = #{medicineNumber,jdbcType=INTEGER},
+      bill_time = #{billTime,jdbcType=TIMESTAMP}
+    where prescription_id = #{prescriptionId,jdbcType=INTEGER}
+  </update>
+</mapper>

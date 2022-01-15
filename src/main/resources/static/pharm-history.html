@@ -1,0 +1,261 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <link rel="stylesheet" href="#" id="colors">
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="pharm-realtime.html">实时配药单</a></li>
+                                        <li class="active"><a href="pharm-history.html">取药单记录</a></li>
+                                        <li><a href="pharm-return.html">开具退药处方单</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="get-quote" style="float: right; margin-top: 10px;">
+                                <a href="staff-login.html" class="btn">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 90%; width: 100%; ">
+        <div class="main-sidebar" style="margin-top: 0;">
+            <!-- Single Widget -->
+            <div class="single-widget search" style="margin-left: 30px; margin-right: 30px;">
+                <div class="form search-input">
+                    <input type="text" placeholder="输入患者身份证号" id="search-id">
+                    <a class="button search-input" style="right: 0; top: 0;" onclick="searchHistory()"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <!--/ End Single Widget -->
+        </div>
+        <div class="pre-history-result">
+            <table class="table">
+                <colgroup>
+                    <col style="width: 100px;" />
+                    <col style="width: 100px;" />
+                    <col style="width: 200px;" />
+                    <col style="width: 100px;" />
+                    <col style="width: 200px;" />
+                    <col style="width: 100px;" />
+                    <col style="width: 200px;" />
+                    <col style="width: 200px;" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>取药单号</th>
+                        <th>患者姓名</th>
+                        <th>患者身份证号</th>
+                        <th>主治医生</th>
+                        <th>开药时间</th>
+                        <th>发药医生</th>
+                        <th>取药时间</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody id="history-list">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--/ End portfolio -->
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+
+    <style type="text/css">
+        .single-widget.search {
+            padding: 0;
+        }
+
+        .pre-history-result {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .pre-history-btn {
+            font-size: 12px;
+            height: 30px;
+            padding-top: 6px;
+        }
+        .btn-untaken {
+            background-color: #F82F56;
+        }
+        .btn-returned {
+            background-color: #32B87D;
+        }
+    </style>
+
+    <script>
+        $(location).ready(function(){$('#history-list').html('')})
+        function searchHistory() {
+            $('#history-list').html('');// 清空内容
+            var patientIdentity = $('#search-id').val();
+
+            //var temp = '';
+            $.ajax({
+                type: "get",
+                dataType:"json",
+                url: "/getTmt",
+                success: function(data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var d = new Date(data[i].takeTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time = d.getHours()
+                        if (time<10){
+                            time='0'+time
+                        }
+                        time=date+' '+time+":"+d.getMinutes()+":"+d.getSeconds()
+                        var d = new Date(data[i].billTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time2 = d.getHours()
+                        if (time2<10){
+                            time2='0'+time2
+                        }
+                        time2=date+' '+time2+":"+d.getMinutes()+":"+d.getSeconds()
+                        var takeFlag='';
+                        if(patientIdentity==data[i].patientIdentity){
+                            takeFlag=data[i].takeState
+                            $('#history-list').append(
+                                '<tr>' +
+                                '<td>' + data[i].takeId + '</td>' +
+                                '<td>' + data[i].patientName + '</td>' +
+                                '<td>' + data[i].patientIdentity + '</td>' +
+                                '<td>' + data[i].mainDoc + '</td>' +
+                                '<td>' + time2 + '</td>' +
+                                '<td>' + data[i].pharDoc + '</td>' +
+                                '<td>' + time + '</td>' +
+                                '<td>' + takeFlag + '</td>' +
+                                '</tr>'
+                            )
+                        }
+                    }
+                }
+            })
+        };
+
+        function select_func() {
+            document.getElementById('option-func').style.display = 'none';
+            document.getElementById('option-time').style.display = 'block';
+            document.getElementById('step-time').style.color = '#1A76D1';//选择就诊时间
+            document.getElementById('step-dept').style.color = 'lightslategray';//选择科室
+        };
+
+        function select_deny() {
+            alert("您无权限访问此功能!")
+        };
+    </script>
+
+</body>
+
+
+</html>

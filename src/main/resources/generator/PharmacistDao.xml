@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.PharmacistDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.Pharmacist">
+    <id column="pharmacist_id" jdbcType="VARCHAR" property="pharmacistId" />
+    <result column="pharmacist_identity" jdbcType="VARCHAR" property="pharmacistIdentity" />
+    <result column="pharmacist_password" jdbcType="VARCHAR" property="pharmacistPassword" />
+    <result column="pharmacist_name" jdbcType="VARCHAR" property="pharmacistName" />
+    <result column="pharmacist_gender" jdbcType="INTEGER" property="pharmacistGender" />
+    <result column="pharmacist_tel" jdbcType="VARCHAR" property="pharmacistTel" />
+    <result column="pharmacist_address" jdbcType="VARCHAR" property="pharmacistAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pharmacist_id, pharmacist_identity, pharmacist_password, pharmacist_name, pharmacist_gender, 
+    pharmacist_tel, pharmacist_address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pharmacists
+    where pharmacist_id = #{pharmacistId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pharmacists
+    where pharmacist_id = #{pharmacistId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="pharmacist_id" keyProperty="pharmacistId" parameterType="com.example.HIS.models.Pharmacist" useGeneratedKeys="true">
+    insert into pharmacists (pharmacist_identity, pharmacist_password, 
+      pharmacist_name, pharmacist_gender, pharmacist_tel, 
+      pharmacist_address)
+    values (#{pharmacistIdentity,jdbcType=VARCHAR}, #{pharmacistPassword,jdbcType=VARCHAR}, 
+      #{pharmacistName,jdbcType=VARCHAR}, #{pharmacistGender,jdbcType=INTEGER}, #{pharmacistTel,jdbcType=VARCHAR}, 
+      #{pharmacistAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="pharmacist_id" keyProperty="pharmacistId" parameterType="com.example.HIS.models.Pharmacist" useGeneratedKeys="true">
+    insert into pharmacists
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pharmacistIdentity != null">
+        pharmacist_identity,
+      </if>
+      <if test="pharmacistPassword != null">
+        pharmacist_password,
+      </if>
+      <if test="pharmacistName != null">
+        pharmacist_name,
+      </if>
+      <if test="pharmacistGender != null">
+        pharmacist_gender,
+      </if>
+      <if test="pharmacistTel != null">
+        pharmacist_tel,
+      </if>
+      <if test="pharmacistAddress != null">
+        pharmacist_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pharmacistIdentity != null">
+        #{pharmacistIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistPassword != null">
+        #{pharmacistPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistName != null">
+        #{pharmacistName,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistGender != null">
+        #{pharmacistGender,jdbcType=INTEGER},
+      </if>
+      <if test="pharmacistTel != null">
+        #{pharmacistTel,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistAddress != null">
+        #{pharmacistAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.Pharmacist">
+    update pharmacists
+    <set>
+      <if test="pharmacistIdentity != null">
+        pharmacist_identity = #{pharmacistIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistPassword != null">
+        pharmacist_password = #{pharmacistPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistName != null">
+        pharmacist_name = #{pharmacistName,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistGender != null">
+        pharmacist_gender = #{pharmacistGender,jdbcType=INTEGER},
+      </if>
+      <if test="pharmacistTel != null">
+        pharmacist_tel = #{pharmacistTel,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistAddress != null">
+        pharmacist_address = #{pharmacistAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pharmacist_id = #{pharmacistId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.Pharmacist">
+    update pharmacists
+    set pharmacist_identity = #{pharmacistIdentity,jdbcType=VARCHAR},
+      pharmacist_password = #{pharmacistPassword,jdbcType=VARCHAR},
+      pharmacist_name = #{pharmacistName,jdbcType=VARCHAR},
+      pharmacist_gender = #{pharmacistGender,jdbcType=INTEGER},
+      pharmacist_tel = #{pharmacistTel,jdbcType=VARCHAR},
+      pharmacist_address = #{pharmacistAddress,jdbcType=VARCHAR}
+    where pharmacist_id = #{pharmacistId,jdbcType=VARCHAR}
+  </update>
+</mapper>

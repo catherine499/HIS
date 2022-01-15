@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.PayTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.PayTable">
+    <id column="pay_id" jdbcType="INTEGER" property="payId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="cashier_id" jdbcType="VARCHAR" property="cashierId" />
+    <result column="pay_item" jdbcType="VARCHAR" property="payItem" />
+    <result column="pay_way" jdbcType="INTEGER" property="payWay" />
+    <result column="pay_money" jdbcType="FLOAT" property="payMoney" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pay_id, patient_identity, cashier_id, pay_item, pay_way, pay_money, pay_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_tables
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </select>
+  <resultMap id="ResultMap1" type="com.example.HIS.DTO.PayHistoryDto">
+    <id column="pay_id" jdbcType="INTEGER" property="payId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="cashier_name" jdbcType="VARCHAR" property="cashierName" />
+    <result column="pay_item" jdbcType="VARCHAR" property="payItem" />
+    <result column="pay_money" jdbcType="FLOAT" property="payMoney" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+  </resultMap>
+
+    <select id="getHistoryByPatientIdentity" resultType="com.example.HIS.DTO.PayHistoryDto" resultMap="ResultMap1">
+        select pay_tables.pay_id,patients.patient_identity,patients.patient_name,cashiers.cashier_name,
+               pay_tables.pay_item,pay_tables.pay_money,pay_tables.pay_time
+        from pay_tables,cashiers,patients
+        where pay_tables.patient_identity=patients.patient_identity and pay_tables.cashier_id=cashiers.cashier_id
+                and pay_tables.patient_identity=#{patientIdentity,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_tables
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="pay_id" keyProperty="payId" parameterType="com.example.HIS.models.PayTable" useGeneratedKeys="true">
+    insert into pay_tables (patient_identity, cashier_id, pay_item, 
+      pay_way, pay_money, pay_time
+      )
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{cashierId,jdbcType=VARCHAR}, #{payItem,jdbcType=VARCHAR}, 
+      #{payWay,jdbcType=INTEGER}, #{payMoney,jdbcType=FLOAT}, #{payTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="pay_id" keyProperty="payId" parameterType="com.example.HIS.models.PayTable" useGeneratedKeys="true">
+    insert into pay_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="cashierId != null">
+        cashier_id,
+      </if>
+      <if test="payItem != null">
+        pay_item,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="payMoney != null">
+        pay_money,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierId != null">
+        #{cashierId,jdbcType=VARCHAR},
+      </if>
+      <if test="payItem != null">
+        #{payItem,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=FLOAT},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.PayTable">
+    update pay_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierId != null">
+        cashier_id = #{cashierId,jdbcType=VARCHAR},
+      </if>
+      <if test="payItem != null">
+        pay_item = #{payItem,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null">
+        pay_money = #{payMoney,jdbcType=FLOAT},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.PayTable">
+    update pay_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      cashier_id = #{cashierId,jdbcType=VARCHAR},
+      pay_item = #{payItem,jdbcType=VARCHAR},
+      pay_way = #{payWay,jdbcType=INTEGER},
+      pay_money = #{payMoney,jdbcType=FLOAT},
+      pay_time = #{payTime,jdbcType=TIMESTAMP}
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </update>
+</mapper>

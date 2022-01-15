@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.RefundTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.RefundTable">
+    <id column="refund_id" jdbcType="INTEGER" property="refundId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="cashier_id" jdbcType="VARCHAR" property="cashierId" />
+    <result column="pay_id" jdbcType="INTEGER" property="payId" />
+    <result column="refund_way" jdbcType="INTEGER" property="refundWay" />
+    <result column="refund_money" jdbcType="FLOAT" property="refundMoney" />
+    <result column="refund_time" jdbcType="TIMESTAMP" property="refundTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    refund_id, patient_identity, cashier_id, pay_id, refund_way, refund_money, refund_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from refund_tables
+    where refund_id = #{refundId,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultType="com.example.HIS.models.RefundTable" resultMap="BaseResultMap">
+      select * from refund_tables
+    </select>
+    <select id="getByPayId" resultType="com.example.HIS.models.RefundTable" resultMap="BaseResultMap">
+      select * from refund_tables where pay_id=#{payId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from refund_tables
+    where refund_id = #{refundId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="refund_id" keyProperty="refundId" parameterType="com.example.HIS.models.RefundTable" useGeneratedKeys="true">
+    insert into refund_tables (patient_identity, cashier_id, pay_id, 
+      refund_way, refund_money, refund_time
+      )
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{cashierId,jdbcType=VARCHAR}, #{payId,jdbcType=INTEGER}, 
+      #{refundWay,jdbcType=INTEGER}, #{refundMoney,jdbcType=FLOAT}, #{refundTime,jdbcType=TIMESTAMP}
+      );
+   <![CDATA[ set sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';]]>
+  </insert>
+  <insert id="insertSelective" keyColumn="refund_id" keyProperty="refundId" parameterType="com.example.HIS.models.RefundTable" useGeneratedKeys="true">
+    insert into refund_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="cashierId != null">
+        cashier_id,
+      </if>
+      <if test="payId != null">
+        pay_id,
+      </if>
+      <if test="refundWay != null">
+        refund_way,
+      </if>
+      <if test="refundMoney != null">
+        refund_money,
+      </if>
+      <if test="refundTime != null">
+        refund_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierId != null">
+        #{cashierId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        #{payId,jdbcType=INTEGER},
+      </if>
+      <if test="refundWay != null">
+        #{refundWay,jdbcType=INTEGER},
+      </if>
+      <if test="refundMoney != null">
+        #{refundMoney,jdbcType=FLOAT},
+      </if>
+      <if test="refundTime != null">
+        #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.RefundTable">
+    update refund_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierId != null">
+        cashier_id = #{cashierId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        pay_id = #{payId,jdbcType=INTEGER},
+      </if>
+      <if test="refundWay != null">
+        refund_way = #{refundWay,jdbcType=INTEGER},
+      </if>
+      <if test="refundMoney != null">
+        refund_money = #{refundMoney,jdbcType=FLOAT},
+      </if>
+      <if test="refundTime != null">
+        refund_time = #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where refund_id = #{refundId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.RefundTable">
+    update refund_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      cashier_id = #{cashierId,jdbcType=VARCHAR},
+      pay_id = #{payId,jdbcType=INTEGER},
+      refund_way = #{refundWay,jdbcType=INTEGER},
+      refund_money = #{refundMoney,jdbcType=FLOAT},
+      refund_time = #{refundTime,jdbcType=TIMESTAMP}
+    where refund_id = #{refundId,jdbcType=INTEGER}
+  </update>
+</mapper>

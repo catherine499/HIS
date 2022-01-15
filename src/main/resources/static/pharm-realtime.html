@@ -1,0 +1,422 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li class="active"><a href="pharm-realtime.html">实时配药单</a></li>
+                                        <li><a href="pharm-history.html">取药单记录</a></li>
+                                        <li><a href="pharm-return.html">开具退药处方单</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="get-quote" style="float: right; margin-top: 10px;">
+                                <a href="staff-login.html" class="btn">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 90%; width: 100%; ">
+        <div style="height: 100%; width: 100%;">
+            <!-- Start realtime prescription -->
+            <div class="row" style="padding-left: 50px; width:1520px;height: 72%; overflow-y:scroll;" id="id-list">
+
+                <div class="single-pf grid-dept pre-grid">
+                    <h3 class="name-func">
+                        编号？</h3>
+                    <a href="#" class="btn" onclick="select_func()">选择</a>
+                </div>
+
+                <div class="single-pf grid-dept pre-grid">
+                    <h3 class="name-func">
+                        编号？</h3>
+                    <a href="#" class="btn" onclick="select_func()">选择</a>
+                </div>
+
+                <div class="single-pf grid-dept pre-grid">
+                    <h3 class="name-func">
+                        编号？</h3>
+                    <a href="#" class="btn" onclick="select_func()">选择</a>
+                </div>
+
+                <div class="single-pf grid-dept pre-grid">
+                    <h3 class="name-func">
+                        编号？</h3>
+                    <a href="#" class="btn" onclick="select_func()">选择</a>
+                </div>
+
+                <div class="single-pf grid-dept pre-grid">
+                    <h3 class="name-func">
+                        编号？</h3>
+                    <a href="#" class="btn" onclick="select_func()">选择</a>
+                </div>
+
+                <div class="single-pf grid-dept pre-grid">
+                    <h3 class="name-func">
+                        编号？</h3>
+                    <a href="#" class="btn" onclick="select_func()">选择</a>
+                </div>
+            </div>
+            <!-- End realtime prescription -->
+            <hr>
+
+            <div class="row">
+                <!-- Start prescription details -->
+                <div class="pre-detail">
+                    <table class="table" style="height: auto">
+                        <colgroup>
+                            <col style="width: 20%"/>
+                            <col style="width: 60%"/>
+                            <col style="width: 20%"/>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>药品名</th>
+                                <th>剂量</th>
+                            </tr>
+                        </thead>
+                        <tbody id="meds-list">
+                            <tr>
+                                <td>1</td>
+                                <td>氯雷他定片</td>
+                                <td>1盒</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End prescription details -->
+
+                <!-- Start action on pres -->
+                <div class="pre-action">
+                    <div>
+                        <button class="btn pre-action-btn" style="background-color: #32B87D;" data-id="0" onclick="switchState(this)">配药开始</button>
+                        <button class="btn pre-action-btn" style="background-color: #F82F56;" data-id="1" onclick="switchState(this)">配药完成</button>
+                        <button class="btn pre-action-btn" data-id="2" onclick="switchState(this)">取药完成</button>
+                    </div>
+                </div>
+
+                <!-- End action on pres -->
+            </div>
+        </div>
+
+    </section>
+    <!--/ End portfolio -->
+
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+
+    <style type="text/css">
+        .grid-dept {
+            height: 200px;
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+        }
+
+        .name-func {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            color: white;
+            background-color: #1a76d1;
+        }
+
+        .pre-grid {
+            height: 150px;
+            width: 200px;
+            margin-right: 30px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: table;
+            background-color: #1a76d1;
+
+        }
+
+        .pre-detail {
+            margin-left: 30px;
+            width: 70%;
+            height: 220px;
+            background-color: white;
+            overflow-y: scroll;
+        }
+
+        .pre-action-btn {
+            width: 80%;
+            font-size: 18px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+
+        $(location).ready(function () {
+            selectedId = ''
+            pList = []
+            sList = []
+            $('#id-list').html('')
+            $('#meds-list').html('')
+            $('.pre-action-btn').attr('disabled', true)
+            // 获取取药单列表,只有编号
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '/getAllTmt',
+                success: function (data) {
+                    console.log(data)
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i].takeState == 3 || data[i].takeState == 4 || pList.indexOf(data[i].takeId) != -1) continue;
+                        var style = ''
+                        if (data[i].takeState == 1) {
+                            style = ' style="background-color:#32B87D;"'
+                        } else if(data[i].takeState == 2) {
+                            style = ' style="background-color:#F82F56;"'
+                        }
+
+                        $('#id-list').append(
+                            '<div class="single-pf grid-dept pre-grid">' +
+                            '<h3 class="name-func"' + style + '>' +
+                            data[i].takeId+
+                            '</h3><a href="#" class="btn" onclick="select_func(this)">选择</a>' +
+                            '</div>'
+                        )
+                        pList.push(data[i].takeId)
+                        sList.push(data[i].takeState)
+                    }
+                }
+            })
+        })
+
+
+        function select_func(e) {
+            var tid = $(e).parent().children()[0].innerHTML
+            selectedId = tid * 1 // selectedId should be an integer...
+            var idIndex = pList.indexOf(selectedId)
+            // console.log(idIndex)
+            // console.log('selected id = ' + tid + ' index = '+idIndex)
+            changeButton(idIndex)
+            // 获取取药单细节
+            $.ajax({
+                type: 'get',
+                url: '/getSelectedTmt?takeMedicineTableId=' + tid,
+                dataType: 'json',
+                success: function (data) {
+                    $('#meds-list').html("")
+                    console.log(data)
+                    for (let i = 0; i < data.length; i++) {
+                        $('#meds-list').append(
+                            '<tr>' +
+                            '<td>' + (i + 1) + '</td>' +
+                            '<td>' + data[i].medicineName + '</td>' +
+                            '<td>' + data[i].medicineNumber + '</td>' +
+                            '</tr>'
+                        )
+                    }
+                }
+            })
+        };
+
+        function changeButton(idIndex) {
+            if (sList[idIndex] == 0) {
+                $('.pre-action-btn[data-id="0"]').attr('disabled',false)
+                $('.pre-action-btn[data-id="1"]').attr('disabled',true)
+                $('.pre-action-btn[data-id="2"]').attr('disabled',true)
+            } else if(sList[idIndex] == 1) {
+                $('.pre-action-btn[data-id="0"]').attr('disabled',true)
+                $('.pre-action-btn[data-id="1"]').attr('disabled',false)
+                $('.pre-action-btn[data-id="2"]').attr('disabled',true)
+            } else if(sList[idIndex] == 2) {
+                $('.pre-action-btn[data-id="0"]').attr('disabled',true)
+                $('.pre-action-btn[data-id="1"]').attr('disabled',true)
+                $('.pre-action-btn[data-id="2"]').attr('disabled',false)
+            } else {
+                $('.pre-action-btn[data-id="0"]').attr('disabled',true)
+                $('.pre-action-btn[data-id="1"]').attr('disabled',true)
+                $('.pre-action-btn[data-id="2"]').attr('disabled',true)
+            }
+        }
+
+
+        function switchState(e) {
+            var idIndex = pList.indexOf(selectedId)
+            if ($(e).data('id') == '0') { // 配药开始
+                // 状态变为配药中
+                $.ajax({
+                    type: 'get',
+                    dataType: 'json',
+                    url: 'makeMedicine?sta=0&tid='+selectedId,
+                    success: function (data) {
+                        var div = $('#id-list').children()[idIndex]
+                        $(div).children('h3').css('background-color','#32B87D')
+                        sList[idIndex] = 1
+                        changeButton(idIndex)
+                    }
+                })
+            } else if ($(e).data('id') == '1') { // 配药完成
+                // 状态变为可取药
+                $.ajax({
+                    type: 'get',
+                    dataType: 'json',
+                    url: 'makeMedicine?sta=1&tid='+selectedId,
+                    success: function (data) {
+                        if(data.status=="ok"){
+                            var div = $('#id-list').children()[idIndex]
+                            $(div).children('h3').css('background-color','#F82F56')
+                            sList[idIndex] = 2
+                            changeButton(idIndex)
+                        }
+                        else{
+                            alert(data.msg)
+                        }
+                    }
+                })
+            } else { // 取药完成
+                $.ajax({
+                    type: 'put',
+                    dataType: 'json',
+                    url: 'makeMedicine?sta=2&tid='+selectedId,
+                    success: function (data) {
+                        var div = $('#id-list').children()[idIndex]
+                        $(div).remove()
+                        pList.splice(idIndex,1)
+                        sList.splice(idIndex,1)
+                        changeButton(idIndex)
+                        $('#meds-list').html('')
+                    }
+                })
+            }
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+
+</html>

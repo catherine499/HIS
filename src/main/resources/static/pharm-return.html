@@ -1,0 +1,357 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="pharm-realtime.html">实时配药单</a></li>
+                                        <li><a href="pharm-history.html">取药单记录</a></li>
+                                        <li class="active"><a href="pharm-return.html">开具退药处方单</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="get-quote" style="float: right; margin-top: 10px;">
+                                <a href="staff-login.html" class="btn">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 90%; width: 100%; ">
+        <div class="main-sidebar" style="margin-top: 0;">
+            <!-- Single Widget -->
+            <div class="single-widget search" style="margin-left: 30px; margin-right: 30px;">
+                <div class="form search-input">
+                    <input type="text" placeholder="搜索取药单号" id="take-id">
+                    <a class="button search-input" href="#" style="right: 0; top: 0;" onclick="searchTake()"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <!--/ End Single Widget -->
+        </div>
+
+        <div id="all-meds" class="main-sidebar" style="margin-top: 10px; display: none;">
+            <div class="single-widget category">
+                <h6 class="title" style="text-align: left;">取药单：<span id="take-meds-id">xxxxxxxx</span></h6>
+                <div class="meds-list">
+                    <table class="table" style="height: auto; color: black;">
+                        <thead>
+                            <tr>
+                                <th>处方编号</th>
+                                <th>药品编号</th>
+                                <th>药品名称</th>
+                                <th>药品数量</th>
+                                <th>药品总价</th>
+                                <th>项目状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="meds-detail-list">
+                            <!-- <tr>
+                                <td>xxxxxxxxxx</td>
+                                <td>xxxxxxxxxx</td>
+                                <td>药1</td>
+                                <td>1</td>
+                                <td>12.00</td>
+                                <td>已取药</td>
+                                <td><input type="checkbox" class="returning-meds"></td>
+
+                            </tr>
+                            <tr>
+                                <td>xxxxxxxxxx</td>
+                                <td>xxxxxxxxxx</td>
+                                <td>药2</td>
+                                <td>1</td>
+                                <td>13.00</td>
+                                <td>未取药</td>
+                                <td><input type="checkbox" class="returning-meds"></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="meds-numbers">
+                    <h5 id="meds-sum">药品总金额：55元</h5>
+                    <h5 id="meds-no">不可退药品总金额：55元</h5>
+                    <h5 id="meds-yes">可退药品总金额：0元</h5>
+                </div>
+                <div class="meds-return-btngroup">
+                    <button class="btn meds-return-btn" style="margin-left: 5%; background-color: #2C2D3F;">取消退药</button>
+                    <button class="btn meds-return-btn" style="margin-left: 10%;" onclick="confirmReturnMeds()">确认退药</button>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!--/ End portfolio -->
+
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+
+    <style type="text/css">
+        .single-widget.search {
+            padding: 0;
+        }
+
+        .single-widget.category {
+            height: 600px;
+        }
+
+        #all-meds {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .meds-list {
+            height: 350px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+        }
+        #meds-sum, #meds-no, #meds-yes {
+            text-align: left;
+            display: inline;
+        }
+
+        #meds-no {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+        
+        .meds-return-btngroup {
+            margin-top: 30px;
+        }
+
+        .meds-return-btn {
+            width: 40%;
+            font-size: 20px;
+            height: 60px;
+        }
+    </style>
+
+    <script>
+        function searchTake() {
+            var takeId = $('#take-id').val()
+            console.log(takeId)
+            var medsSum = 0
+
+            $.ajax({
+                type: 'get',
+                url: '/getTmtReturn?takeId=' + takeId,
+                dataType: 'json',
+                success: function(data) {
+                    $('#all-meds').css('display','block');
+                    $('#take-meds-id').text(takeId)
+                    $('#meds-detail-list').html('')
+
+                    console.log(data)
+
+                    for (let i = 0; i < data.length; i++) {
+                        var takeFlag = data[i].takeState == 4 ? '已退药' : data[i].takeState == 3 ? '已取药' : '未取药';
+                        medsSum = medsSum + data[i].medicineNumber * data[i].medicineMoney
+                        $('#meds-detail-list').append(
+                            '<tr>'+
+                                '<td>' + data[i].prescriptionId + '</td>' +
+                                '<td>' + data[i].medicineId + '</td>' +
+                                '<td>' + data[i].medicineName + '</td>' +
+                                '<td>' + data[i].medicineNumber + '</td>' +
+                                '<td>' + data[i].medicineNumber * data[i].medicineMoney + '</td>' +
+                                '<td>' + takeFlag + '</td>' +
+                                '<td><input type="checkbox" class="returning-meds" onclick="selectMed(this)"></td>' +
+                            '</tr>'
+                        )
+                    }
+                    $('#meds-sum').text('药品总金额：' + medsSum + '元')
+                    $('#meds-no').text('不可退药品总金额：' + medsSum + '元')
+                    $('#meds-yes').text('可退药品总金额：0元')
+                }
+            })
+
+        }
+
+
+        function selectMed(e) {
+            var medsSum = $('#meds-sum').text()
+            medsSum = medsSum.substring(6, medsSum.length - 1) * 1 // 转换成整数
+            var medsNo = $('#meds-no').text()
+            medsNo = medsNo.substring(9, medsNo.length - 1) * 1 // 转换成整数
+            var medsYes = $('#meds-yes').text()
+            medsYes = medsYes.substring(8, medsYes.length - 1) * 1 // 转换成整数
+
+            console.log(medsYes)
+            console.log(medsNo)
+
+            var returnPrice = $(e).parent().parent().children()[4].innerHTML * 1
+            // console.log(returnPrice)
+            
+            if ($(e).prop('checked')){
+                console.log('checked')
+                medsYes += returnPrice
+                medsNo -= returnPrice
+            } else {
+                medsYes -= returnPrice
+                medsNo += returnPrice
+            }
+            $('#meds-yes').text('可退药品总金额：' + medsYes + '元')
+            $('#meds-no').text('不可退药品总金额：' + medsNo + '元')
+
+        }
+
+        function confirmReturnMeds() {
+            var checkList = document.getElementsByClassName('returning-meds')
+            console.log(checkList)
+            var takeId = $('#take-meds-id').text()
+            var data_ = {'prescriptionId':'', 'takeId':takeId}
+            for (let i = 0; i < checkList.length; i++) {
+                var checkbox = checkList[i]
+                var prescriptionId = $(checkbox).parent().parent().children()[0].innerHTML
+
+                data_['prescriptionId'] += prescriptionId + ','
+            }
+
+            data_['prescriptionId'] = data_['prescriptionId'].substring(0, data_['prescriptionId'].length-1)
+
+            console.log(data_)
+
+            $.ajax({
+                type: 'post',
+                url: '/ReturnMedicine',
+                dataType: "json",
+                cache: false,
+                data: data_,
+                success: function(data) {
+                    if (data.status == 'ok'){
+                        console.log(data)
+                        alert(data.msg)
+                        location.reload()
+                    } else {
+                        console.log(data.msg)
+                    }
+                }
+            })
+        }
+        
+    </script>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.DepartmentDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.Department">
+    <id column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="department_tel" jdbcType="VARCHAR" property="departmentTel" />
+    <result column="department_address" jdbcType="VARCHAR" property="departmentAddress" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    department_id, department_name, department_tel, department_address
+  </sql>
+  <select id="selectByExample" parameterType="com.example.HIS.models.DepartmentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from departments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from departments
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from departments
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.HIS.models.DepartmentExample">
+    delete from departments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="department_id" keyProperty="departmentId" parameterType="com.example.HIS.models.Department" useGeneratedKeys="true">
+    insert into departments (department_name, department_tel, department_address
+      )
+    values (#{departmentName,jdbcType=VARCHAR}, #{departmentTel,jdbcType=VARCHAR}, #{departmentAddress,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="department_id" keyProperty="departmentId" parameterType="com.example.HIS.models.Department" useGeneratedKeys="true">
+    insert into departments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentName != null">
+        department_name,
+      </if>
+      <if test="departmentTel != null">
+        department_tel,
+      </if>
+      <if test="departmentAddress != null">
+        department_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentTel != null">
+        #{departmentTel,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentAddress != null">
+        #{departmentAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.HIS.models.DepartmentExample" resultType="java.lang.Long">
+    select count(*) from departments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+    <select id="getAll" resultType="com.example.HIS.models.Department" resultMap="BaseResultMap">
+    select * from departments
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+    update departments
+    <set>
+      <if test="record.departmentId != null">
+        department_id = #{record.departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentName != null">
+        department_name = #{record.departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentTel != null">
+        department_tel = #{record.departmentTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentAddress != null">
+        department_address = #{record.departmentAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update departments
+    set department_id = #{record.departmentId,jdbcType=VARCHAR},
+      department_name = #{record.departmentName,jdbcType=VARCHAR},
+      department_tel = #{record.departmentTel,jdbcType=VARCHAR},
+      department_address = #{record.departmentAddress,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.Department">
+    update departments
+    <set>
+      <if test="departmentName != null">
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentTel != null">
+        department_tel = #{departmentTel,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentAddress != null">
+        department_address = #{departmentAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.Department">
+    update departments
+    set department_name = #{departmentName,jdbcType=VARCHAR},
+      department_tel = #{departmentTel,jdbcType=VARCHAR},
+      department_address = #{departmentAddress,jdbcType=VARCHAR}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </update>
+</mapper>

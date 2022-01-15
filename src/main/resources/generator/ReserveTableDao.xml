@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.ReserveTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.ReserveTable">
+    <id column="reserve_id" jdbcType="INTEGER" property="reserveId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="reserve_type" jdbcType="INTEGER" property="reserveType" />
+    <result column="reserve_state" jdbcType="INTEGER" property="reserveState" />
+    <result column="reserve_time" jdbcType="TIMESTAMP" property="reserveTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    reserve_id, patient_identity, department_id, doctor_id, reserve_type, reserve_state, 
+    reserve_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from reserve_tables
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </select>
+    <select id="selectViolateByPatientId"  parameterType="java.lang.String"  resultType="com.example.HIS.models.ReserveTable" resultMap="BaseResultMap">
+    select * from violate_tables as vt ,reserve_tables as rt
+        where vt.reserve_id =rt.reserve_id and rt.patient_identity=#{patientId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reserve_tables
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="reserve_id" keyProperty="reserveId" parameterType="com.example.HIS.models.ReserveTable" useGeneratedKeys="true">
+    insert into reserve_tables (patient_identity, department_id, doctor_id, 
+      reserve_type, reserve_state, reserve_time
+      )
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, 
+      #{reserveType,jdbcType=INTEGER}, #{reserveState,jdbcType=INTEGER}, #{reserveTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="reserve_id" keyProperty="reserveId" parameterType="com.example.HIS.models.ReserveTable" useGeneratedKeys="true">
+    insert into reserve_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="reserveType != null">
+        reserve_type,
+      </if>
+      <if test="reserveState != null">
+        reserve_state,
+      </if>
+      <if test="reserveTime != null">
+        reserve_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveType != null">
+        #{reserveType,jdbcType=INTEGER},
+      </if>
+      <if test="reserveState != null">
+        #{reserveState,jdbcType=INTEGER},
+      </if>
+      <if test="reserveTime != null">
+        #{reserveTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.ReserveTable">
+    update reserve_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="reserveType != null">
+        reserve_type = #{reserveType,jdbcType=INTEGER},
+      </if>
+      <if test="reserveState != null">
+        reserve_state = #{reserveState,jdbcType=INTEGER},
+      </if>
+      <if test="reserveTime != null">
+        reserve_time = #{reserveTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.ReserveTable">
+    update reserve_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      reserve_type = #{reserveType,jdbcType=INTEGER},
+      reserve_state = #{reserveState,jdbcType=INTEGER},
+      reserve_time = #{reserveTime,jdbcType=TIMESTAMP}
+    where reserve_id = #{reserveId,jdbcType=INTEGER}
+  </update>
+
+  <resultMap id="ResultMap1" type="com.example.HIS.DTO.ReserveHistoryDto">
+    <id column="reserve_id" jdbcType="INTEGER" property="reserveId" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="reserve_type" jdbcType="INTEGER" property="reserveType" />
+    <result column="reserve_state" jdbcType="INTEGER" property="reserveState" />
+    <result column="reserve_time" jdbcType="TIMESTAMP" property="reserveTime" />
+  </resultMap>
+  <select id="selectHistoryByPatientId" resultType="com.example.HIS.DTO.ReserveHistoryDto" resultMap="ResultMap1">
+    select reserve_tables.reserve_id, departments.department_name,doctors.doctor_name,reserve_tables.reserve_type,
+           reserve_tables.reserve_state,reserve_tables.reserve_time
+    from reserve_tables,doctors,departments
+    where reserve_tables.doctor_id= doctors.doctor_id and departments.department_id=reserve_tables.department_id
+            and reserve_tables.patient_identity=#{patientIdentity,jdbcType=VARCHAR}
+  </select>
+
+
+  <resultMap id="ResultMap2" type="com.example.HIS.DTO.ReserveTableDto">
+    <id column="reserve_id" jdbcType="INTEGER" property="reserveId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctorName" />
+    <result column="reserve_type" jdbcType="INTEGER" property="reserveType" />
+    <result column="reserve_state" jdbcType="INTEGER" property="reserveState" />
+    <result column="reserve_time" jdbcType="TIMESTAMP" property="reserveTime" />
+  </resultMap>
+
+  <select id="selectInfoByPIdToday" resultType="com.example.HIS.DTO.ReserveTableDto" resultMap="ResultMap2">
+    select reserve_tables.reserve_id,reserve_tables.patient_identity,patients.patient_name,
+           reserve_tables.department_id,doctors.doctor_name,reserve_tables.reserve_type,
+           reserve_tables.reserve_state,reserve_tables.reserve_time
+    from reserve_tables,doctors,patients
+    where reserve_tables.patient_identity=#{patientIdentity,jdbcType=VARCHAR}
+      and reserve_tables.patient_identity=patients.patient_identity
+      and reserve_tables.doctor_id=doctors.doctor_id
+      and <![CDATA[ DATE_FORMAT(reserve_time, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')]]>
+
+  </select>
+</mapper>

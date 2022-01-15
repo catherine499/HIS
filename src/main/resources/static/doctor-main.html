@@ -1,0 +1,882 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+
+</head>
+
+<body>
+
+    <header class="header style2">
+        <!-- Middle Header -->
+        <div class="middle-header" style="padding: 0; padding-top: 10px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Start Logo -->
+                        <div class="logo">
+                            <img src="img/logo.png" alt="#">
+                        </div>
+                        <!-- End Logo -->
+                        <!-- Mobile Nav -->
+                        <div class="mobile-nav"></div>
+                        <!-- End Mobile Nav -->
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-12">
+                        <div class="widget-main">
+                            <!-- Single Widget -->
+                            <div class="single-widget button">
+                                <div style="float:left; margin-top: 10px; margin-right: 20px">
+                                    工号：<span id="doctor-id"></span>
+                                </div>
+                                <div class="get-quote" style="float: right;">
+                                    <a href="staff-login.html" class="btn">退出</a>
+                                </div>
+                                <div class="get-quote" style="float: right; padding-right: 30px;" onclick="nextPatient()">
+                                    <a href="#" class="btn">诊毕</a>
+                                </div>
+                            </div>
+                            <!--/ End Single Widget -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Middle Header -->
+
+    </header>
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 60%; width: 100%; ">
+        <!-- Start patient info -->
+        <div class="patient-info" id="patient-infoo" data-id="0">
+            <p>
+            <h5 class="patient-info-h">当前病人</h5>
+            <h5 class="patient-info-h" id="patient-name" data-id="aaa">姓名：呃呃呃</h5>
+            <h5 class="patient-info-h" id="register-number">就诊号：13</h5>
+            <h5 class="patient-info-h" id="patient-gender">性别：男</h5>
+            <h5 class="patient-info-h" id="patient-age">年龄：27</h5>
+            </p>
+
+        </div>
+        <!-- End patient info -->
+
+        <!-- Start function: records, checkups, prescriptions -->
+        <header class="header style2">
+            <div class="header-inner">
+                <div class="container">
+                    <div class="inner">
+                        <div class="row">
+                            <div class="col-12" style="height: auto;">
+                                <!-- Main Menu -->
+                                <div class="main-menu" style="float: left;">
+                                    <nav class="navigation">
+                                        <ul class="nav menu">
+                                            <li class="active" id="records"><a href="#" onclick="showRecords()">新建病历</a>
+                                            </li>
+                                            <li id="checkups"><a href="#" onclick="showCheckups()">检验申请</a></li>
+                                            <li id="prescriptions"><a href="#" onclick="showPrescriptions()">处方单</a>
+                                            </li>
+                                            <li id="history"><a href="#" onclick="showHistory()">历史病历</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ End Header Inner -->
+        </header>
+        <!-- End function: records, checkups, prescriptions -->
+
+        <!-- Start records -->
+        <div class="func-option doc-records" id="doc-records" style="display: block;">
+            <div style="width: 70%; padding-left: 20px; float: left;">
+
+                <p class="doc-records-sympton">
+                <h6 class="doc-records-item" >症状描述</h6><textarea  id="record-symptom"
+                    class="doc-records-input"></textarea>
+                </p>
+
+                <p class="doc-records-result">
+                <h6 class="doc-records-item" >诊断结果</h6><textarea  id="record-result"
+                    class="doc-records-input"></textarea>
+                </p>
+
+                <div class="doc-records-btngroup"><button class="btn" onclick="submitRecord()">暂存</button>
+                    <button class="btn" style="margin-left: 50px;">打印</button>
+                </div>
+
+            </div>
+
+            <!-- 病历模板选择 -->
+            <!-- <div class="doc-records-format">
+            </div> -->
+        </div>
+        <!-- End records -->
+
+        <!-- Start checkups -->
+        <div class="func-option doc-checkups" id="doc-checkups" style="display: none;">
+            <div style=" padding-left: 20px; float: left;">
+                <p class="doc-checkups-result">
+                <h6 class="doc-records-item">临床诊断</h6><textarea class="doc-records-input" id="check_des"></textarea>
+                </p>
+
+                <p class="doc-checkups-type">
+                <h6 class="doc-records-item doc-checkups-item">检查项目</h6>
+                <select class="doc-checkups-input" id="checkup-item">
+                    <option>心电图</option>
+                    <option>颅脑平扫</option>
+                    <option>胸部平扫</option>
+                    <option>胸部正侧位片</option>
+                    <option>胸腰段正侧位</option>
+                </select>
+                </p>
+
+                <div class="doc-records-btngroup" style="margin-top: 100px;"><button class="btn"
+                        onclick="submitCheckup()">暂存</button>
+                    <button class="btn" style="margin-left: 50px;">打印</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- End checkups -->
+
+        <!-- Start prescriptions -->
+        <div class="func-option doc-prescriptions" id="doc-prescriptions" style="display: none;">
+            <div class="doc-records-btngroup" style="margin-top: 20px; margin-bottom: 20px; margin-left: 600px;"><button
+                    class="btn" onclick="submitPrescription()">暂存</button>
+                <button class="btn" style="margin-left: 50px;">打印</button>
+            </div>
+            <div class="doc-prescriptions-list">
+                <table class="table doc-table" style="margin-bottom: 0; height: auto;">
+                    <colgroup>
+                        <col style="width: 15%;" />
+                        <col style="width: 40%;" />
+                        <col style="width: 20%;" />
+                        <col style="width: 15%;" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>药品编号</th>
+                            <th>药品名</th>
+                            <th>用量</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="meds-list">
+                        <tr>
+                            <td>xxxxxxxxxxxxxxxx</td>
+                            <td>莫欣克拉霉素缓释片</td>
+                            <td class="doc-table-editable" contenteditable="">1</td>
+                            <td>
+                                <button class="btn doc-table-btn" onclick="deleteMed(this)">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>xxxxxxxxxxxxxxxx</td>
+                            <td>莫欣克拉霉素缓释片</td>
+                            <td class="doc-table-editable" contenteditable="">1</td>
+                            <td>
+                                <button class="btn doc-table-btn" onclick="deleteMed(this)">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table doc-table">
+                    <colgroup>
+                        <col style="width: 15%;" />
+                        <col style="width: 40%;" />
+                        <col style="width: 20%;" />
+                        <col style="width: 15%;" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td class="doc-table-inputgrid"><input class="doc-table-input" id="meds-name" />
+                                <a href="#"
+                                    onclick="searchMed()"><i class="icofont-search-1"></i></a>
+                                    <div id="meds-drawer" data-id="023">
+                                        <span id="searched-meds-name">扑热息痛</span>剩余：<span id="searched-meds-number">5</span>
+                                    </div>
+                                </td>
+                            <td></td>
+                            <td>
+                                <!-- <button class="btn doc-table-btn">删除</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End prescriptions -->
+
+        <!-- Start history -->
+        <div class="func-option doc-history" id="doc-history" style="display: none;">
+            <div class="doc-history-list">
+                <table class="table doc-table">
+                    <thead>
+                        <tr>
+                            <th>病历编号</th>
+                            <th>就诊时间</th>
+                            <th>主治医生</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-list">
+                        <tr>
+                            <td>xxxxxxxxxxx</td>
+                            <td>2020-11-11 09:00</td>
+                            <td>内科-啊啊啊</td>
+                            <td><button class="btn doc-table-btn" onclick="getDetail(this)">查看</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="doc-history-detail">
+                <h1 class="history-empty">病历详情</h1>
+                <textarea class="history-detail-text" disabled></textarea>
+            </div>
+        </div>
+        <!-- End history -->
+
+    </section>
+    <!--/ End portfolio -->
+
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+    
+    <style type="text/css">
+        #meds-drawer {
+            margin-top: 10px;
+            text-align: right;
+            width: 80%;
+            /*height: 200px;*/
+            padding: 10px 10px;
+            border: solid gray 1px;
+            border-radius: 10px;
+        }
+
+        #searched-meds-name {
+            float: left;
+        }
+
+        .patient-info {
+            height: 20%;
+            padding-left: 50px;
+        }
+
+        .patient-info-h {
+            display: inline-block;
+            text-align: center;
+            margin-left: 20px;
+            margin-right: 50px;
+            padding-top: 10px;
+        }
+
+        .func-option {
+            height: 60%;
+        }
+
+        .doc-records,
+        .doc-checkups {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .doc-records-item {
+            color: black;
+        }
+
+        .doc-checkups-item {
+            float: left;
+        }
+
+        .doc-records-sympton,
+        .doc-records-result,
+        .doc-checkups-result,
+        .doc-checkups-type {
+            padding-left: 30px;
+            width: 70%;
+            color: black;
+            padding-bottom: 30px;
+        }
+
+        .doc-records-input {
+            margin-left: 30px;
+            width: 600px;
+            height: 100px;
+            resize: none;
+        }
+
+        .doc-checkups-input {
+            position: absolute;
+            margin-left: 95px;
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .doc-records-item {
+            float: left;
+            padding-top: 10px;
+        }
+
+        .doc-records-btngroup {
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+
+        .doc-records-format {
+            width: 30%;
+            background-color: darkslategrey;
+            float: left;
+        }
+
+        .doc-history {
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .doc-history-list {
+            overflow-y: auto;
+            width: 50%;
+            float: left;
+            height: 550px;
+        }
+
+        .doc-history-detail {
+            width: 50%;
+            overflow-y: scroll;
+            border: gray solid 1px;
+            float: left;
+            display: table;
+            height: 500px;
+        }
+
+        .history-empty {
+            width: 100%;
+            height: 100%;
+            color: gray;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .history-detail-text {
+            display: none;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            overflow-y: scroll;
+        }
+
+        .doc-table {
+            color: black;
+        }
+
+        .doc-table-input {
+            border: solid gainsboro 1px;
+            width: 80%;
+            margin-right: 10px;
+        }
+
+
+        .doc-table-btn {
+            font-size: 10px;
+            /* height: 20px; */
+            padding: 5px 20px;
+        }
+
+        .doc-table-editable {
+            background-color: gainsboro;
+        }
+
+        .doc-prescriptions-btngroup {
+            float: right;
+            width: 200px;
+            margin-right: 20px;
+        }
+
+        .doc-prescriptions-btn {
+            width: 180px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+        function showRecords() {
+            if ($("records").hasClass('active')) return;
+
+            $("#records").addClass('active')
+            if ($("#checkups").hasClass) $("#checkups").removeClass('active')
+            if ($("#prescriptions").hasClass) $("#prescriptions").removeClass('active')
+            if ($("#history").hasClass) $("#history").removeClass('active')
+
+            $("#doc-records").css('display', 'block')
+            $("#doc-checkups").css('display', 'none')
+            $("#doc-prescriptions").css('display', 'none')
+            $("#doc-history").css('display', 'none')
+        }
+
+        function showCheckups() {
+            if ($("#checkups").hasClass('active')) return;
+
+            $("#checkups").addClass('active')
+            if ($("#records").hasClass('active')) $("#records").removeClass('active')
+            if ($("#prescriptions").hasClass('active')) $("#prescriptions").removeClass('active')
+            if ($("#history").hasClass('active')) $("#history").removeClass('active')
+
+            $("#doc-records").css('display', 'none')
+            $("#doc-checkups").css('display', 'block')
+            $("#doc-prescriptions").css('display', 'none')
+            $("#doc-history").css('display', 'none')
+        }
+
+        function showPrescriptions() {
+            if ($("#prescriptions").hasClass('active')) return;
+
+            $("#prescriptions").addClass('active')
+            if ($("#records").hasClass('active')) $("#records").removeClass('active')
+            if ($("#checkups").hasClass('active')) $("#checkups").removeClass('active')
+            if ($("#history").hasClass('active')) $("#history").removeClass('active')
+
+            $("#doc-records").css('display', 'none')
+            $("#doc-checkups").css('display', 'none')
+            $("#doc-prescriptions").css('display', 'block')
+            $("#doc-history").css('display', 'none')
+
+            $('#meds-list').html('')
+        }
+
+        function showHistory() {
+            if ($("#history").hasClass('active')) return;
+
+            $("#history").addClass('active')
+            if ($("#checkups").hasClass('active')) $("#checkups").removeClass('active')
+            if ($("#records").hasClass('active')) $("#records").removeClass('active')
+            if ($("#prescriptions").hasClass('active')) $("#prescriptions").removeClass('active')
+
+            $("#doc-records").css('display', 'none')
+            $("#doc-checkups").css('display', 'none')
+            $("#doc-prescriptions").css('display', 'none')
+            $("#doc-history").css('display', 'block')
+
+            getHistory()
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            recordId = $('#patient-infoo').data('id')
+            $('#meds-drawer').css('display', 'none')
+            $('#searched-meds-name').html('')
+            $('#searched-meds-number').html('')
+
+            medsList = []
+            registerId = ''
+            // 获取这个病人的信息
+            $.ajax({
+                type: 'get',
+                url: '/doctor-main/',
+                dataType: 'json',
+                cache: false,
+                async: false,
+                success: function (data) {
+                    $('#doctor-id').text(sessionStorage.getItem('doctorId'))
+                    registerId = data.register_id
+                    var gender = ""
+                    if(data.patientGender==0){
+                        gender="女"
+                    }
+                    else gender="男"
+                    $('#patient-name').text("姓名："+data.patientName)
+                    $('#patient-name').data('id', data.patientId)
+                    $('#patient-age').text("年龄："+calAge(data.patientId))
+                    $('#patient-gender').text("性别："+gender)
+                    $('#register-number').text("就诊号："+data.registerNumber)
+                },
+            })
+        })
+
+        function calAge(id) {
+            // 默认是中国人
+            var dob = id.substring(6, 14)
+            var year = dob.substring(0, 4) * 1
+            var month = dob.substring(4, 6) * 1
+            var day = dob.substring(6) * 1
+
+            var date = new Date()
+            var thisYear = date.getFullYear()
+            var thisMonth = date.getMonth() + 1
+            var thisDay = date.getDate()
+
+            var age = thisYear - year
+            if (thisMonth < month) {
+                age -= 1
+            } else if (thisMonth == month && thisDay < day) {
+                age -= 1
+            }
+
+            return age;
+        }
+
+        function submitRecord() {
+            var symptomDescription = '症状描述：' + $('#record-symptom').val() +'\n'
+                '诊断结果：' + $('#record-result').val()
+
+            var data_ = {}
+            data_['symtomDescription'] = symptomDescription
+            data_['patientId'] = $('#patient-name').data('id')
+
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                // contentType: 'application/json',
+                url: '/doctor-main/record',
+                data: data_,
+                success: function (data) {
+                    if (data.recordStatus == 'ok'){
+                        alert('暂存成功！')
+                        recordId = data.recordId
+                        $('#patient-infoo').data('id',recordId)
+                    } else {
+                        alert('暂存失败！')
+                    }
+                },
+
+            })
+
+        }
+
+        function submitCheckup() {
+            var checkDescription = $('#checkup-item').val()
+            // console.log(checkDescription)
+            var data_ = {}
+            data_['checkDescription'] =  checkDescription
+            data_['patientId'] = $('#patient-name').data('id')
+            data_['recordId'] = recordId
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                // contentType: 'application/json',
+                data: data_,
+                url: '/doctor-main/check',
+                success: function (data) {
+                    console.log(data)
+                    alert('暂存成功！')
+                }
+            });
+
+        }
+
+        function searchMed() {
+            var medName = $('#meds-name').val()
+            $.ajax({
+                type: 'get',
+                url: '/doctor-main/medicineSearch?medicineName=' + medName,
+                dataType: 'json',
+                async: true,
+                success: function (data) {
+                    console.log(data)
+                    if (data.status == 'ok') {
+                        $('#meds-drawer').css('display', 'block')
+                        $('#meds-drawer').data('id',data.medicineId)
+                        $('#searched-meds-name').text(data.medicineName)
+                        $('#searched-meds-number').text(data.medicineNumber)
+                    } else {
+                        alert(data.msg)
+                    }
+                }
+            })
+        }
+
+        $('#meds-drawer').click(function() {
+            var medId = $(this).data('id')
+            console.log(medId)
+            var medName = $('#searched-meds-name').text()
+            addMed(medId, medName)
+            $(this).css('display', 'none')
+            $('#meds-name').val('')
+        })
+
+        function addMed(medicineId, medicineName) {
+            $('#meds-list').append(
+                '<tr>' +
+                '<td>' + medicineId + '</td>' +
+                '<td>' + medicineName + '</td>' +
+                '<td class="doc-table-editable" contenteditable="">1</td>' +
+                '<td><button class="btn doc-table-btn" onclick="deleteMed(this)">删除</button></td>' +
+                '</tr>'
+            )
+            medsList.push(medicineId)
+        }
+
+        function deleteMed(e) {
+            var medId = $(e).parent().parent().children()[0]
+            var i = medsList.indexOf(medId)
+            medsList.splice(i,1)
+            $(e).parent().parent().remove()
+        }
+
+        function submitPrescription() {
+            var data_ = {}
+            data_['recordId'] = recordId
+            data_['patientId'] = $('#patient-name').data('id')
+            data_['medicineId'] = ''
+            data_['medicineNumber'] = ''
+
+            var tds = $('#meds-list').children().children()
+            console.log(tds)
+            for (let i = 0; i < tds.length; i+=4) {
+                data_['medicineId'] += ','+tds[i].innerHTML
+                data_['medicineNumber'] += ','+ tds[i+2].innerHTML
+
+                // console.log(data_['medicineId'])
+                // console.log(data_['medicineNumber'])
+            }
+            // console.log(data_)
+            data_['medicineId'] = data_['medicineId'].substring(1)
+            data_['medicineNumber'] = data_['medicineNumber'].substring(1)
+
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                // contentType: 'application/json',
+                url: '/doctor-main/prescriptionCreate',
+                data: data_,
+                success: function(data) {
+                    //
+                    alert('暂存成功！')
+                }
+            })
+            
+        }
+
+        function getHistory() {
+            departmentId2Name = {
+                'DE000001': '内科',
+                'DE000002': '外科',
+                'DE000003': '儿科',
+                'DE000004': '五官科',
+                'DE000005': '皮肤科',
+                'DE000006': '康复科',
+            }
+            $('#history-list').html('')
+            var patientId = $('#patient-name').data('id')
+            // console.log(patientId)
+            $.ajax({
+                type: 'get',
+                cache: 'false',
+                url: '/doctor-main/historyRecord?patientId='+patientId,
+                async: 'false',
+                dataType: 'json',
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        var d = new Date(data[i].billTime);
+                        var year = d.getFullYear()
+                        var month = d.getMonth()+1
+                        var day = d.getDate()
+                        var date = year + '-' + month + '-' + day
+                        var time = d.getHours()
+                        if (time<10){
+                            time='0'+time
+                        }
+                        time=date+' '+time+":"+d.getMinutes()+":"+d.getSeconds()
+                        $('#history-list').append(
+                            '<tr>' +
+                            '<td>' + data[i].recordId + '</td>' +
+                            '<td>' + time + '</td>' +
+                            '<td>' + departmentId2Name[data[i].departmentId] + '-' + data[i].doctorName + '</td>' +
+                            '<td><button class="btn doc-table-btn" onclick="getDetail(this)">查看</button></td>' +
+                            '</tr>'
+                        )
+                    }
+                }
+            })
+        }
+
+        function getDetail(e) {
+            console.log('????')
+            $('.history-empty').css('display','none')
+            $('.history-detail-text').css('display','block')
+            // $('.history-detail-text').val('test')
+
+            var recordId = $(e).parent().parent().children()[0].innerText
+            $.ajax({
+                type: 'get',
+                cache: 'false',
+                url: '/doctor-main/detailedRecord?recordId=' + recordId,
+                dataType: 'json',
+                async: 'false',
+                success: function (data) {
+                    var symptonDescription = data.symptomDescription
+                    var medicineName = data.medicineNames
+                    var medicineNumber = data.medicineNumbers
+                    var checkDescription = data.checkDescriptions
+
+                    var medHistory = '\n给药：\n'
+                    if (medicineName != '' ){
+                        medicineName = medicineName.split(',')
+                        medicineNumber = medicineNumber.split(',')
+                        for (let i = 0; i < medicineName.length-1; i++) {
+                            var tmp = medicineName[i] + '       用量：' + medicineNumber[i] + '\n'
+                            medHistory += tmp
+                        }
+                    } else {
+                        medHistory += '无给药信息' + '\n'
+                    }
+                    var checkupHistory = '\n检查检验：\n'
+                    if (checkDescription != ''){
+                        checkDescription = checkDescription.split(',')
+                        for (let i = 0; i < checkDescription.length-1; i++) {
+                            checkupHistory += checkDescription + '结果：无明显异常\n'
+                        }
+                    } else {
+                        checkupHistory += '无检查检验信息' + '\n'
+                    }
+
+                    var history = symptonDescription + medHistory + checkupHistory
+                    console.log(history)
+                    $('.history-detail-text').val(history)
+                }
+            })
+        }
+
+        function nextPatient() {
+
+            $.ajax({
+                type:'get',
+                url:'/doctor-main/next',
+                data: {"registerId":registerId},
+                dataType: 'json',
+                success: function (data) {
+                    alert('诊毕！')
+
+                    registerId = data.register_id
+                    var gender = ""
+                    if(data.patientGender==0){
+                        gender="女"
+                    }
+                    else gender="男"
+                    $('#patient-name').text("姓名："+data.patientName)
+                    $('#patient-name').data('id', data.patientId)
+                    $('#patient-age').text("年龄："+calAge(data.patientId))
+                    $('#patient-gender').text("性别："+gender)
+                    $('#register-number').text("就诊号："+data.registerNumber)
+
+                    // $('#patient-name').text(data.patientName)
+                    // $('#patient-name').data('id', data.patientId)
+                    // $('#patient-age').text(calAge(data.patientId))
+                    // $('#patient-gender').text(data.patientGender)
+                    // $('#register-number').text(data.registerNumber)
+                    location.reload()
+                },
+            })
+        }
+    </script>
+
+</body>
+
+
+</html>

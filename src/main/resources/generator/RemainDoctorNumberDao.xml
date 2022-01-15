@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.RemainDoctorNumberDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.RemainDoctorNumber">
+    <result column="remain_doctor_number_id" jdbcType="INTEGER" property="remainDoctorNumberId" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.HIS.models.RemainDoctorNumber">
+    insert into remain_doctor_numbers (remain_doctor_number_id, doctor_id, `time`,
+      `number`)
+    values (#{remainDoctorNumberId,jdbcType=INTEGER}, #{doctorId,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP},
+      #{number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="remain_doctor_number_id" keyProperty="remainDoctorNumberId" parameterType="com.example.HIS.models.RemainDoctorNumber" useGeneratedKeys="true">
+    insert into remain_doctor_numbers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.RemainDoctorNumber">
+    update remain_doctor_numbers
+    set doctor_id = #{doctorId,jdbcType=VARCHAR},
+        `time` = #{time,jdbcType=TIMESTAMP},
+        `number` = #{number,jdbcType=INTEGER}
+    where remain_doctor_number_id = #{remainDoctorNumberId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="resultMap1" type="com.example.HIS.DTO.RemainDoctorDto">
+    <result column="remain_doctor_number_id" jdbcType="INTEGER" property="remainDoctorNumberId" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="doctor_name" jdbcType="INTEGER" property="doctorName" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+  </resultMap>
+  <select id="getAllDoctorRemain" resultType="com.example.HIS.DTO.RemainDoctorDto" resultMap="resultMap1">
+    select remain_doctor_number_id,doctors.doctor_id,time,number,doctors.doctor_name,doctors.department_id
+    from doctors,remain_doctor_numbers
+    where doctors.doctor_id=remain_doctor_numbers.doctor_id and doctors.doctor_id!='D0000001'
+  </select>
+  <select id="selectByDoctorID" resultType="com.example.HIS.models.RemainDoctorNumber" resultMap="BaseResultMap">
+    select * from remain_doctor_numbers where doctor_id=#{doctorId,jdbcType=VARCHAR}
+  </select>
+    <select id="selectByDoctorId" resultType="com.example.HIS.DTO.RemainDoctorDto" resultMap="resultMap1">
+      SELECT remain_doctor_number_id,doctors.doctor_id,time,number,doctors.doctor_name,doctors.department_id
+      FROM doctors,remain_doctor_numbers
+      where doctors.doctor_id=#{doctorId,jdbcType=VARCHAR} and doctors.doctor_id=remain_doctor_numbers.doctor_id
+      and doctors.doctor_id!='D0000001'
+      and <![CDATA[ DATEDIFF(date(time),CURDATE()) <8 and DATEDIFF(date(time),CURDATE()) >=1  ]]>
+    </select>
+  <select id="getAllDoctorRemainToday" resultType="com.example.HIS.DTO.RemainDoctorDto" resultMap="resultMap1">
+    SELECT remain_doctor_number_id,doctors.doctor_id,time,number,doctors.doctor_name,doctors.department_id
+    FROM doctors,remain_doctor_numbers
+    where doctors.doctor_id=remain_doctor_numbers.doctor_id
+      and doctors.doctor_id!='D0000001'
+  and <![CDATA[ DATE_FORMAT(time, '%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+--     and time>NOW()
+    ]]>
+  </select>
+    <select id="selectByDoctorIdAndTime" resultType="com.example.HIS.models.RemainDoctorNumber" resultMap="BaseResultMap">
+      select *
+      from remain_doctor_numbers
+        where doctor_id=#{doctorId} and <![CDATA[UNIX_TIMESTAMP(date(time))-UNIX_TIMESTAMP(NOW()) <3600;]]>
+    </select>
+</mapper>

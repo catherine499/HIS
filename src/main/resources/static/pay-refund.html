@@ -1,0 +1,359 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="Site keywords here">
+    <meta name="description" content="">
+    <meta name='copyright' content=''>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="css/color/color1.css">
+    <!--<link rel="stylesheet" href="css/color/color2.css">-->
+    <!--<link rel="stylesheet" href="css/color/color3.css">-->
+    <!--<link rel="stylesheet" href="css/color/color4.css">-->
+    <!--<link rel="stylesheet" href="css/color/color5.css">-->
+    <!--<link rel="stylesheet" href="css/color/color6.css">-->
+    <!--<link rel="stylesheet" href="css/color/color7.css">-->
+    <!--<link rel="stylesheet" href="css/color/color8.css">-->
+    <!--<link rel="stylesheet" href="css/color/color9.css">-->
+    <!--<link rel="stylesheet" href="css/color/color10.css">-->
+    <!--<link rel="stylesheet" href="css/color/color11.css">-->
+    <!--<link rel="stylesheet" href="css/color/color12.css">-->
+
+    <link rel="stylesheet" href="#" id="colors">
+
+
+</head>
+
+<body>
+    <!-- Header Area -->
+    <header class="header style2">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu" style="float: left;">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="pay-main.html">收费</a></li>
+                                        <li><a href="pay-new-app.html">现场挂号</a></li>
+                                        <li><a href="pay-app.html">预约取号</a></li>
+                                        <li><a href="pay-history.html">缴费单记录</a></li>
+                                        <li class="active"><a href="pay-refund.html">退费</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="get-quote" style="float: right; margin-top: 10px;">
+                                <a href="login.html" class="btn">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start portfolio -->
+    <section class="portfolio section" style="padding-top: 20px; height: 90%; width: 100%; ">
+        <div class="main-sidebar" style="margin-top: 0;">
+            <!-- Single Widget -->
+            <div class="single-widget search" style="margin-left: 30px; margin-right: 30px;">
+                <div class="form search-input">
+                    <input type="text" placeholder="搜索缴费单号" id="search-id">
+                    <a class="button search-input" href="#" style="right: 0; top: 0;" onclick="searchPayment()"><i
+                            class="fa fa-search"></i></a>
+                </div>
+            </div>
+            <!--/ End Single Widget -->
+        </div>
+
+        <div id="paying-items" class="main-sidebar" style="margin-top: 10px;">
+            <div class="single-widget category">
+                <h6 class="title" style="text-align: left;" id="pay-id">缴费单：xxxxxxxxxxxxx<span id='pay-way'
+                        style="float: right;">缴费方式：现金</span></h6>
+                <div class="paying-items-list">
+                    <table class="table" style="height: auto; color: black;">
+                        <thead>
+                            <tr>
+                                <th>项目单号</th>
+                                <th>项目名称</th>
+                                <th>项目数量</th>
+                                <th>项目总价</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="refund-item-list">
+                            <!-- <tr>
+                                <td>xxxxxxxxxx</td>
+                                <td>心电图</td>
+                                <td>1</td>
+                                <td>30.00</td>
+                                <td><input type="checkbox" class="refund-meds"></td>
+                            </tr>
+                            <tr>
+                                <td>xxxxxxxxxx</td>
+                                <td>药1</td>
+                                <td>1</td>
+                                <td>12.00</td>
+                                <td><input type="checkbox" class="refund-meds"></td>
+                            </tr>
+                            <tr>
+                                <td>xxxxxxxxxx</td>
+                                <td>药2</td>
+                                <td>1</td>
+                                <td>13.00</td>
+                                <td><input type="checkbox" class="refund-meds"></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="paying-numbers">
+                    <h5 id="paying-sum">缴费总金额：55元</h5>
+                    <h5 id="paying-no">不可退费金额：55元</h5>
+                    <h5 id="paying-yes">可退费金额：0元</h5>
+                </div>
+                <div class="pay-refund-btngroup">
+                    <button class="btn pay-refund-btn" style="margin-left: 5%; background-color: #2C2D3F;">取消退费</button>
+                    <button class="btn pay-refund-btn" style="margin-left: 10%;" onclick="confirmRefund()">确认退费</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--/ End portfolio -->
+
+    <!-- jquery Min JS -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+
+    <style type="text/css">
+        .single-widget.search {
+            padding: 0;
+        }
+
+        .single-widget.category {
+            height: 600px;
+        }
+
+        #paying-items {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .paying-items-list {
+            height: 350px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+        }
+
+        #paying-sum,
+        #paying-no,
+        #paying-yes {
+            text-align: left;
+            display: inline;
+        }
+
+        #paying-no {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        .pay-refund-btngroup {
+            margin-top: 30px;
+        }
+
+        .pay-refund-btn {
+            width: 40%;
+            font-size: 20px;
+            height: 60px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('#paying-items').css('display','none')
+        })
+
+        function searchPayment() {
+            var payId = $('#search-id').val()
+            $('#pay-id').text("缴费单：" + payId)
+
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '/getPayReturn?payId=' + payId,
+                success: function (data) {
+                    console.log(data)
+                    $('#paying-items').css('display','block')
+                    $('#refund-item-list').html('')
+                    // var payingSum = 0;
+                    // var payingNo = 0;
+                    // var payingYes = 0;
+                    $('#refund-item-list').append(
+                        '<tr>' +
+                        '<td>' + data.id + '</td>' +
+                        '<td>' + data.name + '</td>' +
+                        '<td>' + data.number + '</td>' +
+                        '<td>' + data.money + '</td>' +
+                        '<td><input type="checkbox" class="refund-meds" onclick="checkItem(this)"></td>' +
+                        '</tr>'
+                    )
+                    // payingSum += data[i].money
+                    // payingNo = payingSum
+                    // $('#paying-sum').text('缴费总金额：' + payingSum + '元')
+                    // $('#paying-no').text('不可退费金额：' + payingNo + '元')
+                    // $('#paying-yes').text('可退费金额：' + payingYes + '元')
+                    // payingNo = payingSum
+                    $('#paying-sum').text('缴费总金额：' + data.money + '元')
+                    $('#paying-no').text('不可退费金额：' + data.money + '元')
+                    $('#paying-yes').text('可退费金额：' + 0 + '元')
+
+                    var payWay = data.payWay == '0' ? '现金' : data.payWay == '1' ? '微信' : '支付宝'
+                    // var payWay = 'test'
+                    $('#pay-way').text('缴费方式：' + payWay)
+                    console.log(payWay + $('#pay-way').text())
+                },
+            })
+        }
+
+        function checkItem(e) {
+            var itemPrice = $(e).parent().parent().children()[3].innerHTML * 1
+            console.log(itemPrice)
+
+            var payingSum = $('#paying-sum').text()
+            payingSum = payingSum.substring(6, payingSum.length - 1) * 1
+            var payingNo = $('#paying-no').text()
+            payingNo = payingNo.substring(7, payingNo.length - 1) * 1
+            var payingYes = $('#paying-yes').text()
+            payingYes = payingYes.substring(6, payingYes.length - 1) * 1
+
+            if ($(e).prop('checked')) {
+                payingNo -= itemPrice
+                payingYes += itemPrice
+            } else {
+                payingNo += itemPrice
+                payingYes -= itemPrice
+            }
+
+            $('#paying-no').text('不可退费金额：' + payingNo + '元')
+            $('#paying-yes').text('可退费金额：' + payingYes + '元')
+        }
+
+        function confirmRefund() {
+            var data = {}
+
+            // var refundWayList = ['现金', '微信', '支付宝']
+            // data['refundWay'] = $('#pay-way').text().substring(5)
+            // refundWay = refundWayList.indexOf(refundWay)
+            data['payId'] = $('#pay-id').text().substring(4)
+            // var refundMoney = $('#paying-yes').text()
+            // data['refundMoney'] = refundMoney.substring(6, refundMoney.length - 1)
+
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                url: '/refund',
+                data: data,
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        alert(data.msg)
+                        location.reload()
+                    }
+                    else {
+                        alert(data.msg)
+                    }
+                }
+            })
+        }
+
+
+    </script>
+
+
+
+</body>
+
+
+</html>

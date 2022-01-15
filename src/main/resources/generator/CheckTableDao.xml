@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.CheckTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.CheckTable">
+    <id column="check_id" jdbcType="INTEGER" property="checkId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="doctor_id" jdbcType="VARCHAR" property="doctorId" />
+    <result column="check_description" jdbcType="VARCHAR" property="checkDescription" />
+    <result column="is_payed" jdbcType="INTEGER" property="isPayed" />
+    <result column="is_checked" jdbcType="INTEGER" property="isChecked" />
+    <result column="bill_time" jdbcType="TIMESTAMP" property="billTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    check_id, patient_identity, doctor_id, check_description, is_payed, is_checked, bill_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_tables
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </select>
+    <select id="getMaxId" resultType="java.lang.String">
+      select ifnull(MAX(check_id),0)
+      FROM check_tables
+    </select>
+
+  <resultMap id="ResultMap1" type="com.example.HIS.DTO.CheckTableDto">
+    <id column="check_id" jdbcType="INTEGER" property="checkId" />
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="check_description" jdbcType="VARCHAR" property="checkDescription" />
+  </resultMap>
+    <select id="getCheckTableDtoById" resultType="com.example.HIS.DTO.CheckTableDto" resultMap="ResultMap1">
+    select check_tables.check_id,patients.patient_identity,patients.patient_name,check_tables.check_description
+    from check_tables,patients
+    where check_tables.patient_identity=patients.patient_identity and check_tables.check_id=#{checkId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from check_tables
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="check_id" keyProperty="checkId" parameterType="com.example.HIS.models.CheckTable" useGeneratedKeys="true">
+    insert into check_tables (patient_identity, doctor_id, check_description, 
+      is_payed, is_checked, bill_time
+      )
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR}, #{checkDescription,jdbcType=VARCHAR}, 
+      #{isPayed,jdbcType=INTEGER}, #{isChecked,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="check_id" keyProperty="checkId" parameterType="com.example.HIS.models.CheckTable" useGeneratedKeys="true">
+    insert into check_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="checkDescription != null">
+        check_description,
+      </if>
+      <if test="isPayed != null">
+        is_payed,
+      </if>
+      <if test="isChecked != null">
+        is_checked,
+      </if>
+      <if test="billTime != null">
+        bill_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDescription != null">
+        #{checkDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="isPayed != null">
+        #{isPayed,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null">
+        #{isChecked,jdbcType=INTEGER},
+      </if>
+      <if test="billTime != null">
+        #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.CheckTable">
+    update check_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDescription != null">
+        check_description = #{checkDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="isPayed != null">
+        is_payed = #{isPayed,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null">
+        is_checked = #{isChecked,jdbcType=INTEGER},
+      </if>
+      <if test="billTime != null">
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.CheckTable">
+    update check_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      check_description = #{checkDescription,jdbcType=VARCHAR},
+      is_payed = #{isPayed,jdbcType=INTEGER},
+      is_checked = #{isChecked,jdbcType=INTEGER},
+      bill_time = #{billTime,jdbcType=TIMESTAMP}
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </update>
+</mapper>

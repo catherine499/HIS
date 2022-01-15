@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.http.encoding",
+      "type": "java.lang.String",
+      "description": "Description for spring.http.encoding."
+  }
+] }

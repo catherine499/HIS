@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.TakeMedineTableDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.TakeMedineTable">
+    <id column="take_id" jdbcType="INTEGER" property="takeId" />
+    <id column="prescription_id" jdbcType="INTEGER" property="prescriptionId"/>
+    <result column="patient_identity" jdbcType="VARCHAR" property="patientIdentity" />
+    <result column="pharmacist_id" jdbcType="VARCHAR" property="pharmacistId" />
+    <result column="take_state" jdbcType="INTEGER" property="takeState" />
+    <result column="bill_time" jdbcType="TIMESTAMP" property="billTime" />
+    <result column="take_time" jdbcType="TIMESTAMP" property="takeTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    take_id, patient_identity, pharmacist_id, prescription_id, take_state, bill_time,
+    take_time
+  </sql>
+  <select id="selectAllTakeMedineTable" resultMap="BaseResultMap">
+    select    *    from take_medine_tables
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from take_medine_tables
+    where take_id = #{takeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from take_medine_tables
+    where take_id = #{takeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="take_id" keyProperty="takeId" parameterType="com.example.HIS.models.TakeMedineTable" useGeneratedKeys="true">
+    insert into take_medine_tables (patient_identity, pharmacist_id, medicine_id,
+                                    take_number, take_state, bill_time,
+                                    take_time)
+    values (#{patientIdentity,jdbcType=VARCHAR}, #{pharmacistId,jdbcType=VARCHAR}, #{medicineId,jdbcType=VARCHAR},
+            #{takeNumber,jdbcType=INTEGER}, #{takeState,jdbcType=INTEGER}, #{billTime,jdbcType=TIMESTAMP},
+            #{takeTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="take_id" keyProperty="takeId" parameterType="com.example.HIS.models.TakeMedineTable" useGeneratedKeys="true">
+    insert into take_medine_tables
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        patient_identity,
+      </if>
+      <if test="pharmacistId != null">
+        pharmacist_id,
+      </if>
+      <if test="prescriptionId != null">
+        prescription_id,
+      </if>
+<!--      <if test="medicineId != null">-->
+<!--        medicine_id,-->
+<!--      </if>-->
+<!--      <if test="takeNumber != null">-->
+<!--        take_number,-->
+<!--      </if>-->
+      <if test="takeState != null">
+        take_state,
+      </if>
+      <if test="billTime != null">
+        bill_time,
+      </if>
+      <if test="takeTime != null">
+        take_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientIdentity != null">
+        #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="prescriptionId != null">
+        #{prescriptionId,jdbcType=INTEGER},
+      </if>
+      <if test="pharmacistId != null">
+        #{pharmacistId,jdbcType=VARCHAR},
+      </if>
+<!--      <if test="medicineId != null">-->
+<!--        #{medicineId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="takeNumber != null">-->
+<!--        #{takeNumber,jdbcType=INTEGER},-->
+<!--      </if>-->
+      <if test="takeState != null">
+        #{takeState,jdbcType=INTEGER},
+      </if>
+      <if test="billTime != null">
+        #{billTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeTime != null">
+        #{takeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.TakeMedineTable">
+    update take_medine_tables
+    <set>
+      <if test="patientIdentity != null">
+        patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacistId != null">
+        pharmacist_id = #{pharmacistId,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineId != null">
+        medicine_id = #{medicineId,jdbcType=VARCHAR},
+      </if>
+      <if test="takeNumber != null">
+        take_number = #{takeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="takeState != null">
+        take_state = #{takeState,jdbcType=INTEGER},
+      </if>
+      <if test="billTime != null">
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeTime != null">
+        take_time = #{takeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where take_id = #{takeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.TakeMedineTable">
+    update take_medine_tables
+    set patient_identity = #{patientIdentity,jdbcType=VARCHAR},
+        pharmacist_id = #{pharmacistId,jdbcType=VARCHAR},
+        prescription_id = #{prescriptionId,jdbcType=INTEGER},
+        take_state = #{takeState,jdbcType=INTEGER},
+        bill_time = #{billTime,jdbcType=TIMESTAMP},
+        take_time = #{takeTime,jdbcType=TIMESTAMP}
+    where take_id = #{takeId,jdbcType=INTEGER}
+  </update>
+</mapper>

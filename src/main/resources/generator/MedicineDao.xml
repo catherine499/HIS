@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.HIS.generate.MedicineDao">
+  <resultMap id="BaseResultMap" type="com.example.HIS.models.Medicine">
+    <id column="medicine_id" jdbcType="VARCHAR" property="medicineId" />
+    <result column="medicine_name" jdbcType="VARCHAR" property="medicineName" />
+    <result column="medicine_number" jdbcType="INTEGER" property="medicineNumber" />
+    <result column="medicine_money" jdbcType="DOUBLE" property="medicineMoney" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    medicine_id, medicine_name, medicine_number, medicine_money
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from medicines
+    where medicine_id = #{medicineId,jdbcType=VARCHAR}
+  </select>
+    <select id="selectByName" resultType="com.example.HIS.models.Medicine" resultMap="BaseResultMap">
+      select *
+      from medicines
+      where medicine_name = #{medicineName,jdbcType=VARCHAR}
+    </select>
+  <select id="selectMoneyById" resultType="java.lang.Double">
+    select medicine_money
+    from medicines
+    where medicine_id = #{medicineId,jdbcType=VARCHAR}
+
+  </select>
+  <select id="selectMedicineNameById" resultType="java.lang.String">
+    select medicine_name from medicines
+    where medicine_id = #{medicineId,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from medicines
+    where medicine_id = #{medicineId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="medicine_id" keyProperty="medicineId" parameterType="com.example.HIS.models.Medicine" useGeneratedKeys="true">
+    insert into medicines (medicine_name, medicine_number, medicine_money
+      )
+    values (#{medicineName,jdbcType=VARCHAR}, #{medicineNumber,jdbcType=INTEGER}, #{medicineMoney,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="medicine_id" keyProperty="medicineId" parameterType="com.example.HIS.models.Medicine" useGeneratedKeys="true">
+    insert into medicines
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="medicineName != null">
+        medicine_name,
+      </if>
+      <if test="medicineNumber != null">
+        medicine_number,
+      </if>
+      <if test="medicineMoney != null">
+        medicine_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="medicineName != null">
+        #{medicineName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineNumber != null">
+        #{medicineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="medicineMoney != null">
+        #{medicineMoney,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.HIS.models.Medicine">
+    update medicines
+    <set>
+      <if test="medicineName != null">
+        medicine_name = #{medicineName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineNumber != null">
+        medicine_number = #{medicineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="medicineMoney != null">
+        medicine_money = #{medicineMoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where medicine_id = #{medicineId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.HIS.models.Medicine">
+    update medicines
+    set medicine_name = #{medicineName,jdbcType=VARCHAR},
+      medicine_number = #{medicineNumber,jdbcType=INTEGER},
+      medicine_money = #{medicineMoney,jdbcType=DOUBLE}
+    where medicine_id = #{medicineId,jdbcType=VARCHAR}
+  </update>
+</mapper>

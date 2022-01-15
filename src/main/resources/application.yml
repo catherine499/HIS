@@ -1,0 +1,28 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: hyy.499622
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+    hiddenmethod:
+      filter:
+        enable:true
+  #    static-path-pattern: classpath:/resources/,classpath:/static/,classpath:/templates/
+  kafka:
+    bootstrap-servers: localhost:9092 #????ip?????????????????????
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: yhtest #???????id
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+mybatis:
+  mapper-locations: classpath:generator/*.xml
