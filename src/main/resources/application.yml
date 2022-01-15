@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: hyy.499622
+    password: root
   mvc:
     view:
       prefix: /
